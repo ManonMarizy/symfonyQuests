@@ -1,15 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+$background: #FFBECE94;
+$background-element: #FF9797;
 body {
-    background-color: #FFBECE94;
+    background-color: $background;
     font-family: 'Handlee', cursive;
 }
 .bg-light {
-    background-color: #FF9797C4 !important;
+    background-color: $background !important;
 }
 .dropdownMenu {
-    background-color: #FF9797;
+    background-color: $background-element;
 }
 .dropdown-item:hover {
-    background-color: #FFBECE94;
+    background-color: $background;
 }
