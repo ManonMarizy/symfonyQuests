@@ -8,5 +8,23 @@ $body-bg: $background;
 $dropdown-bg: $background-element;
 $dropdown-link-hover-bg: $background;
 $light: $background;
-
+$card-bg: $background;
+$card-border-radius: 10px;
+.card {
+  box-shadow: 3px 3px 3px gray;
+}
+.img-size {
+  width: 20px;
+}
+.btn-heart:hover {
+  background-color: $background;
+}
+.card-title {
+  border: solid 2px gray;
+  display: inline-block;
+  background-color: $background-element;
+  padding: 5px;
+  box-shadow: 2px 2px 2px gray;
+  border-radius: 5px;
+}
 @import "~bootstrap/scss/bootstrap";
