@@ -25,7 +25,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Program", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Program", inversedBy="category", mappedBy="category")
      */
     private $programs;
 
@@ -46,7 +46,7 @@ class Category
     }
 
     /**
-     * param Program $program
+     * @param Program $program
      * @return Category
      */
     public function addProgram(Program $program): self
