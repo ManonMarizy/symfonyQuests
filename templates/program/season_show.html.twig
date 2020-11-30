@@ -9,7 +9,7 @@
         <p class="h4">Liste des épisodes</p>
         <ul class="list-unstyled">
             {% for episode in season.episodes %}
-                <li class="ml-4">Episode {{ episode.number }}: {{ episode.title }}</li>
+                <li class="ml-4"><a href="{{ path("program_episode_show", { programId: program.id, seasonId: season.id, episodeId: episode.id }) }}">Episode {{ episode.number }}: {{ episode.title }}</li>
             {% endfor %}
         </ul>
     </div>
