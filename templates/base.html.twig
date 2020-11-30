@@ -10,7 +10,9 @@
     </head>
     <body>
         <header>
-            {% include '_navbar.html.twig' %}
+            {{ render(controller(
+                'App\\Controller\\NavBarController::displayNavBar'
+            )) }}
         </header>
 
         {% block main %}{% endblock %}
