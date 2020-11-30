@@ -13,9 +13,8 @@
         {% for serieByCategory in seriesByCategory %}
             <div class="media">
                 <div class="media-body">
-                    <h1 class="mt-0"> #{{ serieByCategory.id }}: {{ serieByCategory.title }}</h1>
+                    <h1 class="mt-0">#{{ serieByCategory.id }}:<a href="{{ path("program_show", { id: serieByCategory.id }) }}">  {{ serieByCategory.title }}</a></h1>
                     <p>{{ serieByCategory.summary }}</p>
-                    <a href="{{ path("program_show", { id: serieByCategory.id }) }}">Voir la fiche</a>
                 </div>
             </div>
 
