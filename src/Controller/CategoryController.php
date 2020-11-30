@@ -29,8 +29,6 @@ class CategoryController extends AbstractController
         );
     }
 
-
-
     /**
      * @Route("/{categoryName}", methods={"GET"}, name="show")
      * @param string $categoryName
