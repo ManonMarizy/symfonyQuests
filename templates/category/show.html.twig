@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% for serieByCategory in seriesByCategory %}
+        {{ serieByCategory.title }}
+    {% endfor %}
+{% endblock %}
+
+{% block main %}
+    {% if seriesByCategory is empty %}
+        <h1>Aucune série trouvée pour la catégorie {{ seriesByCategory.category.name }}</h1>
+    {% else %}
+        {% for serieByCategory in seriesByCategory %}
+            <div class="media">
+                <div class="media-body">
+                    <h1 class="mt-0"> #{{ serieByCategory.id }}: {{ serieByCategory.title }}</h1>
+                    <p>{{ serieByCategory.summary }}</p>
+                    <a href="{{ path("program_show", { id: serieByCategory.id }) }}">Voir la fiche</a>
+                </div>
+            </div>
+
+            <a href="{{ path('category_index') }}">
+                Retour à la liste des catégories
+            </a>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
