@@ -20,6 +20,7 @@
                     Catégories
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{{ path('category_index') }}">Toutes</a>
                     {% for category in categories %}
                         <a class="dropdown-item" href="{{ path('category_show', { categoryName: category.name }) }}">{{ category.name }}</a>
                     {% endfor %}
@@ -37,6 +38,4 @@
             </li>
         </ul>
     </div>
-
-
 </nav>
