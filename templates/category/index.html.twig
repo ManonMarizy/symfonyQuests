@@ -1,15 +1,23 @@
 {%  extends 'base.html.twig' %}
 {%  block main %}
-    <h1>Toutes les categories : </h1>
-    {% for category in categories %}
-        <a href="{{ path('category_show', { categoryName: category.name }) }}">
-            <h2>{{ category.name }}</h2>
-        </a>
-    {% else %}
-        Aucune catégorie trouvée.
-    {% endfor %}
-
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    <div class="m-3">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-info mb-3 mt-3" href="{{ path('category_new') }}">Ajouter une catégorie</a>
+        </div>
+        <h1 class="text-center mb-5">Toutes les categories : </h1>
+        <div>
+            {% for category in categories %}
+                <a href="{{ path('category_show', { categoryName: category.name }) }}">
+                    <h2>{{ category.name }}</h2>
+                </a>
+            {% else %}
+                Aucune catégorie trouvée.
+            {% endfor %}
+        </div>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-outline-primary mt-4" href="{{ path('app_index') }}">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
 {%  endblock %}
