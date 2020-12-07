@@ -14,9 +14,19 @@
                     <li class="ml-3"><a href="{{ path("program_season_show", { programId: program.id, seasonId: season.id }) }}">Saison {{ season.number}}</a></li>
                 {% endfor %}
             </ul>
-            <a href="{{ path('program_index') }}">
-                Retour à la liste des programmes
-            </a>
+            <strong>Acteurs :</strong>
+            <ul class="list-unstyled">
+                {% for actor in program.actors %}
+                    <li class="ml-3"><a href="{{ path("actor_show", { id: actor.id }) }}">{{ actor.name }}</a></li>
+                {% else %}
+                    <li class="ml-3">Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
+            <div class="d-flex justify-content-end">
+                <a href="{{ path('program_index') }}">
+                    Retour à la liste des programmes
+                </a>
+            </div>
         </div>
     </div>
 {% endblock %}

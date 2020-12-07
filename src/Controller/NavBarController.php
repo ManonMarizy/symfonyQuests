@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +19,14 @@ class NavBarController extends AbstractController
         $categories = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
+        $actors = $this->getDoctrine()
+            ->getRepository(Actor::class)
+            ->findAll();
         return $this->render(
             '_navbar.html.twig',
-            ['categories' => $categories]
+            ['categories' => $categories,
+                'actors' => $actors
+            ]
         );
     }
 }
