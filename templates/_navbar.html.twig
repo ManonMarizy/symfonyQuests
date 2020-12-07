@@ -34,9 +34,10 @@
                     Acteurs
                 </a>
                 <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">?</a>
-                    <a class="dropdown-item" href="#">?</a>
-                    <a class="dropdown-item" href="#">?</a>
+                    <a class="dropdown-item" href="{{ path('actor_index') }}">Tous</a>
+                    {% for actor in actors %}
+                        <a class="dropdown-item" href="{{ path("actor_show", { id: actor.id }) }}">{{ actor.name }}</a>
+                    {% endfor %}
                 </div>
             </li>
         </ul>
