@@ -27,8 +27,8 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
-     * @Assert\Length(max="255", maxMessage="La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères"))
+     * @Assert\NotBlank(message="le champ est vide")
+     * @Assert\Length(max=255, maxMessage="Le titre saisit est trop long, il ne devrait pas dépasser {{ limit }} caractères")
      */
     private $title;
 
