@@ -43,6 +43,7 @@ class Season
 
     /**
      * @ORM\OneToMany(targetEntity=Episode::class, mappedBy="season", orphanRemoval=true)
+     * @ORM\OrderBy({"number" : "ASC"})
      */
     private $episodes;
 

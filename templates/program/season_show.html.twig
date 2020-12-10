@@ -2,8 +2,8 @@
 
 {% block main %}
     <div class="m-3">
-        <h1 class="text-center mb-4">Saison {{ season.id }} de {{ program.title }}</h1>
-        <p class="h5">La saison {{ season.id }} de {{ program.title }} est constituée de {{ season.episodes|length }} épidoses et a été diffuée en {{ season.year }}.</p>
+        <h1 class="text-center mb-4">Saison {{ season.number}} de {{ program.title }}</h1>
+        <p class="h5">La saison {{ season.number }} de {{ program.title }} est constituée de {{ season.episodes|length }} épidoses et a été diffuée en {{ season.year }}.</p>
         <p class="h4">Description:</p>
         <p>{{ season.description }}</p>
         <p class="h4">Liste des épisodes</p>
