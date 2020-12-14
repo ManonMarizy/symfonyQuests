@@ -7,4 +7,5 @@ Lien pour la vidéo de la quête 13: https://www.loom.com/share/93c79ecdb2f94c8c
 Lien pour la vidéo de la quête 14: https://www.loom.com/share/3892e05fd0a742b08fd7577a8eb1fcf5  
 Lien pour la vidéo de la quête 15: https://www.loom.com/share/aa611f531e4d4d65ae1f70fd92a9d23e  
 Liens pour la quête 16: https://www.loom.com/share/6b8021cf798e4394a3809c5a567e4ae0 et https://www.loom.com/share/704d01787e864149bc9ea6317cda8501  
-Lien pour la quête 17: https://www.loom.com/share/d1a20d6ae98c4a6cb38f2dc7c4a920ef
+Lien pour la quête 17: https://www.loom.com/share/d1a20d6ae98c4a6cb38f2dc7c4a920ef  
+Lien pour la quête 18: https://www.loom.com/share/7bb0282b26fa4bcd9994e522e5129dbe

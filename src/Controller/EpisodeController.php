@@ -9,6 +9,9 @@ use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,23 +35,29 @@ class EpisodeController extends AbstractController
      * @Route("/new", name="episode_new", methods={"GET","POST"})
      * @param Request $request
      * @param Slugify $slugify
+     * @param MailerInterface $mailer
      * @return Response
+     * @throws TransportExceptionInterface
      */
-    public function new(Request $request, Slugify $slugify): Response
+    public function new(Request $request, Slugify $slugify, MailerInterface $mailer): Response
     {
         $episode = new Episode();
-        $slug = $slugify->generate($episode->getTitle());
-        $episode->setSlug($slug);
         $form = $this->createForm(EpisodeType::class, $episode);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugify->generate($episode->getTitle());
+            $episode->setSlug($slug);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($episode);
             $entityManager->flush();
-
+            $email = (new Email())
+                ->from('your_email@example.com')
+                ->to('your_email@example.com')
+                ->subject('Un nouvel épisode vient d\'être publié !')
+                ->html($this->renderView('episode/newEpisodeEmail.html.twig', ['episode' => $episode]));
+            $mailer->send($email);
             return $this->redirectToRoute('episode_index');
         }
-
         return $this->render('episode/new.html.twig', [
             'episode' => $episode,
             'form' => $form->createView(),
