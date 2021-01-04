@@ -3,11 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Episode;
-use App\Entity\Program;
 use App\Entity\Season;
 use App\Entity\User;
 use App\Form\CommentType;
-use App\Form\ProgramType;
+use App\Form\SearchProgramFormType;
+use App\Repository\ProgramRepository;
 use App\Service\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -18,6 +18,8 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Program;
+use App\Form\ProgramType;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -26,20 +28,27 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 Class ProgramController extends AbstractController
 {
     /**
-     * Show all rows from Program’s entity
-     *
      * @Route("/", name="index")
+     * @param Request $request
+     * @param ProgramRepository $programRepository
      * @return Response A response instance
      */
-    public function index(): Response
+    public function index(Request $request, ProgramRepository $programRepository): Response
     {
-        $programs = $this->getDoctrine()
-            ->getRepository(Program::class)
-            ->findAll();
+        $form = $this->createForm(SearchProgramFormType::class);
+        $form->handleRequest($request);
 
-        return $this->render(
-            'program/index.html.twig',
-            ['programs' => $programs]
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $programs = $programRepository->findLikeNameOrLikeActor($search);
+        } else {
+            $programs = $programRepository->findAll();
+        }
+
+        return $this->render('program/index.html.twig', [
+                'programs' => $programs,
+                'form' => $form->createView()
+            ]
         );
     }
 
