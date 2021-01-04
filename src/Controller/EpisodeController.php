@@ -56,6 +56,7 @@ class EpisodeController extends AbstractController
                 ->subject('Un nouvel épisode vient d\'être publié !')
                 ->html($this->renderView('episode/newEpisodeEmail.html.twig', ['episode' => $episode]));
             $mailer->send($email);
+            $this->addFlash('success', 'The new episode has been created');
             return $this->redirectToRoute('episode_index');
         }
         return $this->render('episode/new.html.twig', [
@@ -93,7 +94,7 @@ class EpisodeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'The episode has been edited');
             return $this->redirectToRoute('episode_index');
         }
 
