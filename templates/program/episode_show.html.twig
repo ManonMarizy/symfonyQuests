@@ -5,5 +5,26 @@
         <h1 class="text-center mb-4">Saison {{ season.id }} de {{ program.title }}</h1>
         <p class="h4">Episode {{ episode.number }}: {{ episode.title }}</p>
         <p>{{ episode.synopsis }}</p>
+        <div>
+            <h2>Espace commentaire</h2>
+            {% for comment in episode.comments|reverse %}
+                <div>
+                    <h4>{{ comment.user.email }}</h4>
+                    <p>{{ comment.comment }}</p>
+                    <p>Rate : {{ comment.rate }}</p>
+                </div>
+            {% endfor %}
+            {% if app.user %}
+                <h5>Ajoutez un commentaire !</h5>
+                <div class="d-flex flex-column">
+                    {{ form_start(form, {'class': 'd-flex flex-column'}) }}
+                    {{ form_row(form.rate, {'attr': {'class': 'd-flex flex-column rounded'}}) }}
+                    {{ form_row(form.comment, {'label': "Commentaire", 'attr': {'class': 'd-flex flex-column rounded',
+                        'style': 'height: 250px; outline: none; overflow: auto; resize: none;'}}) }}
+                    <button class="btn btn-success mt-3" type="submit">Publier</button>
+                    {{ form_end(form) }}
+                </div>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
