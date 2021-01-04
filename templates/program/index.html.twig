@@ -11,6 +11,9 @@
                             <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
                             <p>{{ program.summary }}</p>
                             <a href="{{ path("program_show", { programSlug: program.slug }) }}">Voir la fiche</a>
+                        {% if is_granted("ROLE_ADMIN") or app.user == program.owner %}
+                            <a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Edit</a>
+                        {%endif%}
                     </div>
             {% else %}
                     Aucune série trouvée.
