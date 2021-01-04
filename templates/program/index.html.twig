@@ -5,6 +5,14 @@
             <a class="btn btn-info" href="{{ path('program_new') }}">Ajouter une série</a>
         </div>
         <h1 class="text-center mb-5">Toutes les séries de la table program : </h1>
+        <h1>Rechercher dans les séries:</h1>
+        <div class="container">
+            <h2>Search for a program :</h2>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn">Search</button>
+            {{ form_end(form) }}
+        </div>
         <div>
             {% for program in programs %}
                     <div class="mb-4">
