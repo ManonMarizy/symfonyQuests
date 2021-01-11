@@ -12,6 +12,7 @@ use App\Service\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
@@ -50,6 +51,29 @@ Class ProgramController extends AbstractController
                 'form' => $form->createView()
             ]
         );
+    }
+
+    /**
+     * @Route("/{program}/watchlist", requirements={"program"="[\w\-]+"}, name="watchlist", methods={"GET"})
+     * @ParamConverter("program", class="App\Entity\Program", options={"mapping": {"program": "slug"}})
+     * @param Request $request
+     * @param Program $program
+     * @param EntityManagerInterface $entityManager
+     * @return JsonResponse
+     */
+    public function addToWatchlist(Request $request, Program $program, EntityManagerInterface  $entityManager)
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if ($this->getUser()->getWatchListPrograms()->contains($program)) {
+            $this->getUser()->removeWatchListProgram($program);
+        }
+        else {
+            $this->getUser()->addWatchListProgram($program);
+        }
+        $entityManager->flush();
+        return $this->json([
+            'isInWatchlist' => $this->getUser()->isInWatchlist($program)
+        ]);
     }
 
     /**

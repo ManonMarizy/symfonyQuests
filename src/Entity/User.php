@@ -48,6 +48,26 @@ class User implements UserInterface
      */
     private $programs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pseudo;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Program::class)
+     */
+    private $watchListPrograms;
+
     public function __construct()
     {
         $this->episode = new ArrayCollection();
@@ -188,6 +208,72 @@ class User implements UserInterface
                 $program->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(?string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(?string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function isInWatchlist(Program $program) : bool
+    {
+        if ($this->watchListPrograms->contains($program)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+     public function getWatchListPrograms(): Collection
+    {
+        return $this->watchListPrograms;
+    }
+
+    public function addWatchListProgram(Program $watchListProgram): self
+    {
+        if (!$this->watchListPrograms->contains($watchListProgram)) {
+            $this->watchListPrograms[] = $watchListProgram;
+        }
+
+        return $this;
+    }
+
+    public function removeWatchListProgram(Program $watchListProgram): self
+    {
+        $this->watchListPrograms->removeElement($watchListProgram);
 
         return $this;
     }

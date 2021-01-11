@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
 $background: #FFBECE94;
 $background-element: #FF9797;
 
@@ -10,15 +15,19 @@ $dropdown-link-hover-bg: $background;
 $light: $background;
 $card-bg: $background;
 $card-border-radius: 10px;
+
 .card {
   box-shadow: 3px 3px 3px gray;
 }
+
 .img-size {
   width: 20px;
 }
+
 .btn-heart:hover {
   background-color: $background;
 }
+
 .card-title {
   border: solid 2px gray;
   display: inline-block;
@@ -27,4 +36,10 @@ $card-border-radius: 10px;
   box-shadow: 2px 2px 2px gray;
   border-radius: 5px;
 }
+
+.watchlist {
+  margin: 5px;
+  color: #B0413E;
+}
+
 @import "~bootstrap/scss/bootstrap";
