@@ -12,7 +12,7 @@
                     <div class="ml-2">
                         <div>
                             <i id="watchlist" class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
-                               data-text='{{ path('program_watchlist', {program: program.slug}) }}'></i>
+                               data-text='{{ path('program_watchlist', {'program': program.slug}) }}'></i>
                         </div>
                     </div>
                 {% endif %}
