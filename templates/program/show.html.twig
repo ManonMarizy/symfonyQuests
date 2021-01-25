@@ -10,10 +10,9 @@
                 <h1 class="mt-0">{{ program.title }}</h1>
                 {% if app.user %}
                     <div class="ml-2">
-                        <div>
-                            <i id="watchlist" class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
-                               data-text='{{ path('program_watchlist', {'program': program.slug}) }}'></i>
-                        </div>
+                        <a href="{{ path('program_watchlist', { 'program': program.slug})}}" id="watchlist">
+                            <i class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart fa-3x" ></i>
+                        </a>
                     </div>
                 {% endif %}
             </div>
