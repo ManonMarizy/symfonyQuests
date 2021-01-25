@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: wild-series
+-- Host: 127.0.0.1    Database: projet3
 -- ------------------------------------------------------
 -- Server version	8.0.22-0ubuntu0.20.04.3
 
@@ -14,30 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `category`
---
-
-DROP TABLE IF EXISTS `category`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `category`
---
-
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Horreur'),(2,'Romance'),(3,'Comédie'),(4,'Fantasy');
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `doctrine_migration_versions`
@@ -60,95 +36,358 @@ CREATE TABLE `doctrine_migration_versions` (
 
 LOCK TABLES `doctrine_migration_versions` WRITE;
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
-INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20201124175552','2020-11-24 18:56:58',85),('DoctrineMigrations\\Version20201129111651','2020-11-29 12:18:33',128),('DoctrineMigrations\\Version20201130114536','2020-11-30 12:45:49',132),('DoctrineMigrations\\Version20201130114824','2020-11-30 12:48:29',97),('DoctrineMigrations\\Version20201130144040','2020-11-30 15:40:49',143);
+INSERT INTO `doctrine_migration_versions` VALUES ('DoctrineMigrations\\Version20201212144008','2020-12-15 14:52:17',1107),('DoctrineMigrations\\Version20201214180939','2020-12-15 14:52:18',1045),('DoctrineMigrations\\Version20201215110313','2020-12-15 14:53:54',115),('DoctrineMigrations\\Version20201215122422','2020-12-15 14:53:54',17),('DoctrineMigrations\\Version20201215233859','2020-12-22 12:10:45',40),('DoctrineMigrations\\Version20201222111027','2020-12-22 12:10:45',33),('DoctrineMigrations\\Version20201222111716','2020-12-22 12:17:22',53),('DoctrineMigrations\\Version20201222120202','2020-12-22 13:02:17',79),('DoctrineMigrations\\Version20210109113437','2021-01-09 12:35:07',216),('DoctrineMigrations\\Version20210110093416','2021-01-10 10:34:40',70),('DoctrineMigrations\\Version20210110131921','2021-01-10 14:19:36',80),('DoctrineMigrations\\Version20210119182723','2021-01-19 19:27:31',105),('DoctrineMigrations\\Version20210119182956','2021-01-19 19:30:01',60),('DoctrineMigrations\\Version20210119185237','2021-01-19 19:53:39',121),('DoctrineMigrations\\Version20210119194739','2021-01-19 20:47:56',56),('DoctrineMigrations\\Version20210120135935','2021-01-20 14:59:45',58);
 /*!40000 ALTER TABLE `doctrine_migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `episode`
+-- Table structure for table `image`
 --
 
-DROP TABLE IF EXISTS `episode`;
+DROP TABLE IF EXISTS `image`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `episode` (
+CREATE TABLE `image` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `season_id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` int NOT NULL,
-  `synopsis` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_DDAA1CDA4EC001D1` (`season_id`),
-  CONSTRAINT `FK_DDAA1CDA4EC001D1` FOREIGN KEY (`season_id`) REFERENCES `season` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `episode`
+-- Dumping data for table `image`
 --
 
-LOCK TABLES `episode` WRITE;
-/*!40000 ALTER TABLE `episode` DISABLE KEYS */;
-INSERT INTO `episode` VALUES (1,5,'Steven Sees a Ghost',1,'Steven Crain is an author known for The Haunting of Hill House, an autobiographical novel about his childhood experience while residing in the haunted mansion along with parents Hugh and Olivia, and his younger siblings Shirley, Theo, Nell and Luke. During their stay, the Crain family encounters paranormal occurrences and is forced to flee without Olivia, who dies within the house, traumatising the rest of the family. Years later, Steven used his family\'s traumatic experiences to write his book, straining the bonds with his siblings. Although it became a best-seller, Steven missed most of the frightening experiences and does not actually believe in the paranormal. Theo goes to a bar where she flirts with a woman, Trish, and goes home with her. Steven and Shirley miss calls from Nell, who then calls Hugh and expresses concern for Luke, who has become an addict. Steven returns home, whereby he sees Luke trying to leave with some equipment that was stolen from his apartment. When Steven enters the apartment, he finds Nell there. While talking to her, Steven receives a call from Hugh informing him that Nell went to Hill House and has died. Steven realizes that Nell is a ghost.'),(2,5,'Open Casket',2,'In childhood flashbacks at Hill House, Shirley encounters a box of kittens located in a hut nearby the mansion, and manages to convince her parents to let her take them inside the house. However, the kittens all end up dying, which deeply affects and disturbs Shirley, who obsesses over why she couldn\'t fix them. Some time after she and her family have left Hill House, a funeral is held for Olivia and an initially distraught Shirley is surprised and in awe that the mortician was able to \"fix\" her mother. As an adult, Shirley is now a mortician who owns a funeral business alongside her husband, Kevin, and rents a guest house to Theo, who is now a child therapist. Shirley soon gets a call from Steven, who informs her of Nell\'s death. Distraught and shaken, she requests that Nell\'s corpse be brought to her and she embalms her sister herself. However, after completing the embalming, Shirley suffers a scare when she encounters a ghost from her past.'),(3,5,'Touch',3,'Flashbacks reveal that Theo is able to perceive feelings from people and impressions from objects when she touches them with her bare hands. An incident with Luke in the dumbwaiter leads to a secret cellar that was not mapped in the house\'s blueprints, whereby Luke encounters a ghost that attacks him. Luke is upset that no one believes him, so Theo investigates and finds a hidden door leading to the basement. Olivia reveals to Theo that her grandmother (and by extent, she and her daughters) are \"sensitive\" and gives Theo a pair of gloves to protect her hands. While working as a therapist for children in foster care, Theo comes across a child that she can\'t \"read\" and who claims to be tormented by \"Mr. Smiley\", a monster that lives in the basement. Theo goes to the house where the little girl lives and discovers the truth of the situation through her touch; the foster dad was molesting the girl and Mr. Smiley was a manifestation of the abuse. Theo contacts the authorities and the foster dad is arrested. Afterwards, Theo goes to the morgue, takes off her gloves and touches Nell\'s forehead. Theo then collapses and screams. Later, Theo opens up about herself to Trish. A flashback to their last night in Hill House reveals disturbing images when Theo touches her father on the way out, including Hugh and Olivia fighting and Olivia getting pushed up against the wall and hitting her head.'),(4,5,'The Twin Thing',4,'Child Luke was frustrated his family never believed him. He finds a friend named Abigail, who all of the family insist is imaginary. Luke claims a bowler hat his mother finds in the attic and wears it frequently. In the present, Luke is now 90 days clean and determined to stay that way. Luke and Nell have shared a \"twin thing\" since birth, and each is able to feel the other\'s physical ailments. Luke\'s best friend in the halfway house, Joey, runs away to get high, and Luke follows after. Child Luke wakes up one night and encounters the spirit of a tall man that comes to collect its bowler hat from Luke. Luke finds his friend, but during his search, Luke feels unnaturally cold and stiff. Lacking money for a place to stay, Luke breaks into Steve’s apartment to steal items and sell. Steve catches him and thinks he is selling them for drugs and buys his items back. Joey takes the money and disappears and later Luke is mugged, leaving him shoeless and wandering with the hatted man following him. The feeling of cold from earlier is unbearable and Luke calls the halfway house to beg to be allowed back in. Steve informs Luke of Nell’s passing. Luke shakily states it wasn\'t suicide.'),(5,5,'The Bent-Neck Lady',5,'Child Nell is tormented by an apparition she calls the Bent-Neck Lady, a ghostly figure with a broken neck standing at the foot of her bed while Nell is unable to move. Adult Nell sees a sleep technologist, Arthur, for sleep paralysis. The two immediately hit it off and eventually marry. During one sleep paralysis episode, Arthur suffers a sudden brain aneurysm and dies, while Nell sees the Bent-Neck Lady again. Nell begins to use her medication less and less, causing schisms with Theo and Steve. In her broken state, and convinced by her therapist that Hill House is \"just a carcass in the woods\", Nell drives off to the house. She enters the house and encounters an idyllic scenario of her family and Arthur in a beautifully renovated mansion before finding herself at the top of a staircase, where she puts a noose around her neck whilst imagining it to be her mother\'s locket, before she is pushed from the ledge by her mother, breaking her neck. As Nell dies, she sees herself fall and travel through the past revealing that she herself is the Bent-Neck Lady haunting her younger self, becoming a ghost of the house.'),(6,5,'Two Storms',6,'The episode alternates between two storms: one the family experienced in the past, at Hill House, the other in the present, the night before Nell\'s funeral, with the entire Crain family meeting at the funeral parlor to view Nell\'s body, together in the same room for the first time since leaving the house. During the storm in the past, Nell goes missing. While searching for her, Olivia sees spirits in the house, and enters a fugue state, acting strangely and unlike herself. The children see a creature in the house. Nell is eventually found, and she says she had been there the whole time, but they couldn\'t see her. At the funeral home in the present, the Crains share memories of Nell. Odd things happen: Steve sees a flash of the ghost of his mother, the power goes out, something is interfering with Nell\'s body by placing buttons on her eyes, and Hugh sometimes seems to talk to himself. The family demands answers from Hugh about what happened, leading to several confrontations and revelations. Tempers rise and the arguments turn nasty. Theo and Kevin reveal they accepted royalties from Steve\'s Hell House book, infuriating Shirley. She later catches Theo and Kevin together in a storage room. Nell\'s coffin falls over by itself, interrupting the fights. Nell\'s spirit had been in the room the whole time as they fought, although no one could see her.'),(7,5,'Eulogy',7,'Hugh is getting dressed and preparing for the funeral, revealing that he has been talking to Olivia. Hugh attempts to reach out to Shirley, who is uncooperative, but has better luck with Theo, and the two converse over each other\'s mistakes and make amends. During the funeral, Hugh tries to reconnect with his children. In the past, Hugh assesses the house for storm damage; moisture and mold suggest a leak, but he can\'t find a source. Mr. Dudley assists Hugh, revealing some history of the house\'s previous occupants. Mr. Dudley suggests the increasingly-erratic Olivia needs to spend time away from the house, sharing some of the strange experiences he and Mrs. Dudley have had, and why they never come to the house at night. Hugh and Olivia agree she needs to spend some time away when her behavior becomes disturbing and dangerous. Hugh discovers the source of the moisture and solves the disappearance of William Hill, the original owner. The ghost of Olivia appears twice, attacking Luke at the funeral and then Hugh and Theo in Shirley\'s office. Luke goes missing after the funeral after stealing Shirley\'s wallet and Theo\'s car.'),(8,5,'Witness Marks',8,'Steven and Hugh drive around to find Luke. Steven believes the family\'s issues are mental and explains he underwent a vasectomy to avoid spreading his family\'s \"sickness\". Shirley and Theo stay at the funeral parlor to keep watch on whether Luke will use the stolen credit card. They have an argument and are spooked by unexplained knocks across the walls. Shirley gets a notification of Luke using the credit card for gas, at a gas station on the way to Hill House. Hugh reveals to Steven that while he was living in the house, Steven had been seeing ghosts all along; he just didn\'t realize they were ghosts. He also explains that Steven and his siblings are like \"an unfinished meal\" to Hill House. Shirley and Theo decide to drive up to Hill House, while continuing to argue with each other. Nellie’s ghost scares them during their argument, until they mend their bond. Luke arrives at Hill House and tries to burn it down, only to be caught off guard by a vision of Olivia and another ghost, who incapacitates Luke.'),(9,5,'Screaming Meemies',9,'In a flashback, Hugh finds Olivia, Nell, and Luke asleep on a couch, and she tells him she wished the children could stay like that forever. When she walks through her reading room door she enters the morgue containing the corpses of adult Nell and Luke, where Nell speaks to her. She wakes up in the middle of the night and encounters the ghost of Poppy Hill. Olivia agrees to leave Hill House the next morning to get some rest at the home of her sister, Janet, but actually checks into a nearby motel. She returns to Hill House and the family\'s last night at the mansion starts to unfold as an unstable Olivia rouses the twins and Abigail, who was staying over for the night, for a tea party in the Red Room. Shirley noticed her mother behaving oddly in the kitchen and awakes Hugh. He realizes Olivia had tainted tea with rat poison and is able to intervene before Luke and Nell drank the tea, but arrived too late to save Abigail. Hugh gets the kids out of the house, leaving a horrified Olivia behind, who dies when she falls off the top of the spiral staircase.'),(10,5,'Silence Lay Steadily',10,'Steven and Hugh see Luke lying unconscious in the Red Room after failing to burn down Hill House. Steven becomes locked in the room and awakens from a nightmare to find Luke near death as Theo and Shirley, unconscious nearby, awaken after experiencing revelatory dreams about their lives. In Luke\'s dream he arises inside a pristine room and finds Olivia, Abigail, and a young Nell. Olivia wants him to stay, but Nell tells him to leave. He wakes up gasping and points to Nell\'s specter as having saved him. Nell explains that the Red Room is the \"stomach\" of the house and the room in which each of them had lived a personal fantasy. Before vanishing she assures them that they had all loved each other completely. Olivia\'s ghost tells Poppy to stay away from Hugh. Olivia doesn\'t want her children to leave, but Hugh convinces her to open the door and let them escape. Hugh and Steven stay behind and Olivia\'s death and its aftermath are revealed. The Dudleys were Abigail\'s parents and convince the younger Hugh to keep the death of Abigail and how it transpired a secret. Hugh, who had died by now, enters the room and joins Olivia and Nell. Two years later, the siblings, with bonds reconciled, celebrate Luke\'s sobriety together with their partners.'),(11,14,'Pilot',1,'Une famille recomposée hautement dysfonctionnelle est forcée de se regrouper lorsqu\'elle réalise qu\'un virus signalé est en fait le début de l\'apocalypse des morts-vivants.'),(12,14,'Si proche et pourtant si loin',2,'Alors que Madison lutte pour empêcher Nick d\'un retrait paralysant, Travis s\'aventure à la recherche de son fils avant que la ville de Los Angeles ne tombe.'),(13,14,'Le chien',3,'Après avoir échappé à une émeute, Travis, Liza et Chris se réfugient chez les Salazars; Madison défend sa maison.'),(14,14,'Ne s\'affaiblit pas',4,'Madison et Travis voient les différents aspects de l\'occupation de la Garde nationale dans leur quartier, la famille essaie de s\'adapter au nouveau monde.'),(15,14,'Cobalt',5,'Le plan de la Garde nationale pour le quartier est révélé; Travis et Madison prennent une décision difficile.'),(16,14,'Le bon homme',6,'Avec les informations que Daniel a récupérées du garde qu\'il a torturé, les trois familles tentent un sauvetage dangereux pour libérer Nick et Liza afin qu\'ils puissent tous quitter la ville pour trouver la sécurité.'),(17,1,'Days Gone Bye',1,'Le shérif adjoint Rick Grimes se réveille d\'un coma et cherche sa famille dans un monde ravagé par les morts-vivants.'),(18,1,'Cran',2,'À Atlanta, Rick est secouru par un groupe de survivants, mais ils se retrouvent bientôt pris au piège dans un grand magasin entouré de marcheurs.'),(19,1,'Dis-le aux grenouilles',3,'Rick est réuni avec Lori et Carl mais décide bientôt - avec certains des autres survivants - de retourner sur le toit et de sauver Merle. Pendant ce temps, les tensions sont vives entre les autres survivants du camp.'),(20,1,'Vatos',4,'Rick, Glenn, Daryl et T-Dog rencontrent un groupe de survivants apparemment hostiles à la recherche de Merle. De retour au camp, Jim commence à se comporter de manière erratique.'),(21,1,'Incendies',5,'Après l\'attaque du camp, Rick conduit les survivants au C.D.C., dans l\'espoir qu\'ils puissent guérir un Jim infecté.'),(22,1,'TS-19',6,'Les survivants ont accès au C.D.C. dans l\'espoir d\'un refuge sûr.'),(23,2,'Ce qui nous attend',1,'Le projet du groupe de se rendre à Fort Benning est suspendu lorsque Sophia disparaît.'),(24,2,'Saignée',2,'Après que Carl ait été accidentellement abattu, le groupe est amené dans une famille vivant dans une ferme voisine. Shane fait un dangereux voyage à la recherche de fournitures médicales.'),(25,2,'Garde le dernier',3,'Alors que l\'état de Carl continue de se détériorer, Shane et Otis tentent d\'esquiver les marcheurs alors qu\'ils retournent à la ferme'),(26,2,'Cherokee Rose',4,'Avec Carl en convalescence, le groupe se concentre sur la recherche de Sophia. Glenn et Maggie partent en voyage pour trouver des fournitures.'),(27,2,'Chupacabra',5,'Seul dans les bois, Daryl trouve un indice mais est blessé et attaqué par des marcheurs. Rick remet en question ses choix. Glenn reçoit des signaux mitigés de Maggie.'),(28,2,'Secrets',6,'Dale confronte Hershel après que Glenn lui ait parlé des marcheurs dans la grange. Pendant ce temps, Lori a du mal à accepter sa grossesse et Shane essaie d\'apprendre à Andrea comment utiliser les armes.'),(29,2,'À peu près déjà mort',7,'Glenn parle au reste du groupe des marcheurs dans la grange, les divisant sur ce qu\'il faut faire. Pendant ce temps, Hershel fixe une date limite pour le départ du groupe, à moins que Rick ne fasse une tâche difficile.'),(30,2,'Nebraska',8,'À la suite de l\'incident de la grange; le groupe enterre des êtres chers, Beth tombe sous le choc, et Rick et Glenn partent à la recherche d\'Hershel lorsqu\'il disparaît.'),(31,2,'Triggerfinger',9,'Rick, Glenn et Hershel sont sous le feu de l\'ennemi après leur rencontre avec Dave et Tony. Pendant ce temps, Shane s\'en prend à Lori quand tout le monde se rend compte qu\'elle a disparu.'),(32,2,'18 milles',10,'Rick et Shane se disputent pour savoir quoi faire avec Randall. De retour à la ferme, Lori, Andrea et Maggie ont affaire à une Beth suicidaire.'),(33,2,'Juge, jury, bourreau',11,'Dale craint que le groupe perde son humanité alors que Rick et les autres votent pour exécuter Randall.'),(34,2,'Meilleurs anges',12,'Le comportement antagoniste de Shane atteint de nouveaux sommets, tandis que Carl subit les conséquences de ses actes.'),(35,2,'À côté du feu mourant',13,'Alors que la ferme est envahie par les marcheurs, le groupe se bat pour s\'échapper'),(36,3,'La graine',1,'Après des mois de fuite, le groupe se réfugie dans une prison fédérale, tandis qu\'ailleurs, la santé d\'Andrea commence à se détériorer.'),(37,3,'Malade',2,'Alors que l\'état de santé de Hershel s\'aggrave, Rick, Daryl et T-Dog traitent avec un groupe de prisonniers.'),(38,3,'Marche avec moi',3,'Andrea et Michonne sont amenées dans une communauté fortifiée dirigée par un homme appelé The Governor.'),(39,3,'Tueur à l\'intérieur',4,'Lori entre en travail lorsque la prison est attaquée. Michonne tente de convaincre Andrea de quitter Woodbury.'),(40,3,'Dire le mot',5,'Rick a du mal à faire face. Andrea et Michonne se séparent. Daryl et Maggie partent chercher de la nourriture et des vêtements pour le bébé.'),(41,3,'Traqué',6,'Rick reçoit un appel téléphonique mystérieux. Andrea se rapproche du gouverneur. Merle tente de traquer Michonne.'),(42,3,'Quand les morts viennent frapper',7,'Michonne conduit Rick, Daryl et Oscar à Woodbury pour sauver Glenn et Maggie. Merle essaie de forcer les informations à sortir de Glenn.'),(43,3,'Fait pour souffrir',8,'Rick, Daryl, Michonne et Oscar entrent à Woodbury à la recherche de Glenn et Maggie. Pendant ce temps, un nouveau groupe de survivants rencontre la prison.'),(44,3,'Le roi du suicide',9,'Woodbury est laissé dans le désarroi suite à l\'attaque du groupe de Rick. La présence de Merle dans le groupe provoque des conflits.'),(45,3,'Accueil',10,'Rick continue de voir des visions de Lori. Le gouverneur prévoit un assaut sur la prison. Daryl et Merle se débrouillent seuls dans la forêt.'),(46,3,'Je ne suis pas un Judas',11,'Alors que Rick et le groupe débattent de leur prochain plan d\'action, Andrea essaie de négocier avec eux. Pendant ce temps, le gouverneur prépare Woodbury pour la bataille.'),(47,3,'Clair',12,'Rick tombe sur un visage familier quand lui, Carl et Michonne retournent dans la ville natale de Rick pour plus d\'armes à feu pour se fortifier contre le gouverneur.'),(48,3,'Flèche sur le montant de la porte',13,'Rick et le gouverneur se rencontrent face à face, apparemment pour prendre une résolution pacifique afin d\'éviter de nouvelles effusions de sang. De retour à la prison, des tensions surgissent entre Merle et le reste du groupe.'),(49,3,'Proie',14,'Le gouverneur traque Andrea quand elle fuit Woodbury. Pendant ce temps, des tensions surgissent au sein du groupe de Tyreese et le plan du gouverneur pour le groupe de Rick est saboté.'),(50,3,'Cette triste vie',15,'Alors que Rick décide du sort de Michonne, Merle prend les choses en main.'),(51,3,'Bienvenue dans les tombes',16,'Alors que Rick et le groupe se préparent à l\'attaque imminente du gouverneur, Andrea se bat pour échapper à la captivité.'),(52,4,'30 jours sans accident',1,'Plusieurs mois se sont écoulés et Rick et le groupe élargi vivent une vie plus paisible à la prison. Des problèmes surgissent lorsque Rick rencontre un nouveau survivant et qu\'une course de ravitaillement se termine par un désastre.'),(53,4,'Infecté',2,'Rick est obligé d\'abandonner son style de vie tranquille lorsqu\'un virus mystérieux met en danger la vie de tout le monde à la prison.'),(54,4,'Isolement',3,'Alors que les malades sont mis en quarantaine, Daryl, Tyreese, Michonne et Bob quittent la prison à la recherche de fournitures médicales. Rick fait une découverte choquante.'),(55,4,'Indifférence',4,'Daryl, Tyreese, Michonne et Bob continuent à pied à l\'école vétérinaire à la recherche de médecine. Rick et Carol partent en courant dans une ville voisine où ils trouvent deux traînards non infectés.'),(56,4,'Internement',5,'Hershel a du mal à soigner les malades alors que la situation dans le bloc cellulaire s\'aggrave. Pendant ce temps, Rick et Carl défendent la prison alors que les clôtures cèdent.'),(57,4,'Appâts vivants',6,'Le gouverneur se lie avec une petite famille après la chute de Woodbury.'),(58,4,'Poids mort',7,'Le gouverneur planifie son prochain déménagement alors que lui, Lilly, Tara et Meghan s\'adaptent à un nouvel environnement.'),(59,4,'Allé trop loin',8,'Rick et le groupe font face à un danger imminent alors que le gouverneur tente de prendre la prison'),(60,4,'Après',9,'Avec le débordement de la prison, Rick et Carl se retrouvent sur la route à la recherche d\'un abri. Pendant ce temps, Michonne est hantée par les souvenirs du passé.'),(61,4,'Détenus',10,'Beth essaie de garder espoir. Tyreese, Lizzie et Mika rencontrent un visage familier. Glenn et Maggie ont du mal à se débrouiller l\'un sans l\'autre.'),(62,4,'Revendiqué',11,'Alors que Carl et Michonne cherchent des fournitures, Rick est confronté à une bande de maraudeurs. Pendant ce temps, Glenn et Tara sont réunis avec trois inconnus pour une mission importante.'),(63,4,'Encore',12,'Daryl et Beth cherchent refuge dans les bois, où un conflit éclate entre les deux.'),(64,4,'Seul',13,'Maggie, Sasha et Bob s\'affrontent pour savoir s\'ils doivent se rendre à Terminus. Daryl et Beth se réfugient dans une maison funéraire apparemment abandonnée.'),(65,4,'Le bosquet',14,'Carol doit faire face à de vieux secrets et au comportement psychotique de Lizzie quand elle, Tyreese et les filles se réfugient dans une maison vacante sur le chemin de Terminus.'),(66,4,'Nous',15,'Glenn et Tara sont sur le chemin de Terminus, mais Abraham est réticent. Daryl a du mal à s\'adapter aux règles des réclamants.'),(67,4,'Une',16,'Rick, Carl et Michonne se croisent à nouveau avec les réclamants sur le chemin de Terminus, alors que le soi-disant sanctuaire commence à révéler son vrai visage.'),(68,6,'Pilote',1,'Le thérapeute Ben Harmon, sa femme Vivien et leur fille Violet traversent le pays à Los Angeles pour échapper à leur passé troublé.'),(69,6,'Violation de domicile',2,'Les amateurs de tueurs en série reconstituent les meurtres brutaux de deux étudiantes en sciences infirmières, tandis que Ben retourne à Boston pour réparer une erreur impliquant une ancienne flamme.'),(70,6,'Maison du meurtre',3,'Ben confronte Moira à propos d\'un comportement étrange récent, tandis que Vivien découvre le premier résident de la maison.'),(71,6,'Halloween: Partie 1',4,'Deux des anciens résidents de la maison, les architectes d\'intérieur Chad et Patrick, donnent des conseils de décoration aux Harmon.'),(72,6,'Halloween: 2e partie',5,'Lors d\'un rendez-vous avec Violet, Tate est harcelée par un groupe d\'adolescents sanglants. Ben et Vivien sont hantés par l\'un des nouveaux invités de la maison.'),(73,6,'Piggy Piggy',6,'Ben voit un nouveau patient qui est terrifié par la légende d\'un homme qui massacre ceux qui répètent un mantra spécifique dans un miroir.'),(74,6,'Journée portes ouvertes',7,'Moira persuade un acheteur potentiel de faire une offre. Constance et Larry travaillent contre ses efforts.'),(75,6,'L\'homme caoutchouc',8,'L\'homme en combinaison en caoutchouc est révélé. La santé mentale de Vivian change.'),(76,6,'Petite fille effrayante',9,'L\'une des victimes de meurtre les plus célèbres de l\'histoire rend visite à la maison. Constance découvre davantage le mauvais comportement de Tate.'),(77,6,'nfants fumants',10,'En 1994, Larry est brûlé. Dans le présent, Ben commence à comprendre ce qui est arrivé à la cause de l\'institutionnalisation de Vivien. Constance est interrogée par la police dans la mort de Travis. Violet apprend quelque chose sur elle-même qu\'elle ne sait pas.'),(78,6,'Naissance',11,'Vivien accouche. Violet apprend qui a engendré l\'un de ses nouveaux frères et sœurs.'),(79,6,'Après la naissance',12,'Les conséquences du travail difficile de Vivien sont révélées et Ben fait des plans pour sortir de la maison. Certains esprits ont d\'autres plans et la famille doit se rassembler pour traverser ces changements très difficiles.'),(80,7,'Bienvenue à Briarcliff',1,'Après une expérience qui a changé sa vie, un jeune homme est admis dans un asile d\'aliénés notoire, tandis qu\'un journaliste local est déterminé à obtenir toute l\'histoire.'),(81,7,'Trucs et friandises',2,'Un exorciste est convoqué à Briarcliff pour aider à sauver un garçon de ferme en difficulté. Le secret le plus sombre de sœur Jude est révélé.'),(82,7,'Nor\'easter',3,'Un groupe de patients planifie une évasion de l\'asile lors d\'une violente tempête.'),(83,7,'Je suis Anne Frank: Partie 1',4,'Un nouveau patient prétendant être Anne Frank expose le passé d\'Arden. Kit apprend pourquoi Grace a été admise à Briarcliff.'),(84,7,'Je suis Anne Frank: partie 2',5,'Sœur Jude déterre la terre sur Arden. Kit fait une confession surprenante. Bloody Face est démasqué.'),(85,7,'Les origines de la monstruosité',6,'Une mystérieuse petite fille est abandonnée à Briarcliff. Le Monseigneur conclut un pacte faustien avec le Dr Arden. L\'origine de Bloody Face est révélée.'),(86,7,'Cousin noir',7,'Sœur Mary Eunice est terrifiée de découvrir qu\'un ange noir est descendu sur Briarcliff. Kit fait un geste audacieux pour retrouver Grace.'),(87,7,'Nuit impie',8,'Un Père Noël meurtrier fait des ravages dans l\'asile. Sœur Jude affronte le diable. Arden a une rencontre choquante dans le Death Chute.'),(88,7,'Le porte-manteau',9,'Le Monseigneur prend un converti improbable. Lana obtient une nouvelle preuve qui peut disculper Kit. Arden est témoin d\'un retour miraculeux.'),(89,7,'Le nom du jeu',10,'Le Monseigneur affronte le Diable. Les expériences d\'Arden aboutissent à une conclusion choquante. Le Dr Thredson facilite une réunion surprenante pour Kit.'),(90,7,'Lait renversé',11,'Grace apporte à Kit des nouvelles dévastatrices sur les expériences des extraterrestres sur Alma. Le Dr Thredson reçoit un visiteur inattendu. Le Monseigneur fait tout son possible pour faire taire Jude.'),(91,7,'Continuum',12,'Un nouveau détenu mortel menace la chance de Sœur Jude d\'être libérée de Briarcliff. L\'obsession de Grace pour les extraterrestres devient violente.'),(92,7,'La folie se termine',13,'Johnny entreprend d\'achever le travail de son père. Lana mène la charge pour finalement arrêter Briarcliff.'),(93,8,'Bitchcraft',1,'Après avoir découvert sa lignée unique, une jeune fille est emmenée dans une académie spéciale pour les filles qui partagent la même lignée.'),(94,8,'Pièces de garçon',2,'Fiona menace une paix de longue date lorsqu\'elle plonge dans le passé de Madame LaLaurie, tandis que Zoe et Madison doivent faire face à une horrible tragédie.'),(95,8,'Les remplaçants',3,'Fiona prend un protégé improbable. Zoe, ravagée par la culpabilité, tente de redonner à Kyle son ancienne vie. Madison a un échange enflammé avec Joan Ramsey, une nouvelle voisine.'),(96,8,'Ensue de farces effrayantes',4,'Les choix de Fiona secouent une trêve de plusieurs décennies entre les sorcières de Salem et Marie Laveau. Le Conseil de la sorcellerie rend une visite surprise à l\'Académie avec des allégations inquiétantes.'),(97,8,'Brûle, sorcière. Brûler!',5,'Zoe révèle un nouveau pouvoir lors du siège de l\'armée zombie. Pendant ce temps, Fiona se venge de Myrtle lorsqu\'une attaque laisse Cordelia aveuglée.'),(98,8,'L\'homme à la hache arrive',6,'Lorsque Zoe, Queenie et Nan utilisent un tableau ouija pour découvrir ce qui est arrivé à Madison, ils réveillent l\'esprit d\'un tueur en série mort depuis longtemps, l\'homme à la hache.'),(99,8,'Le mort',7,'Fiona trouve un nouveau but dans une dangereuse histoire d\'amour. Une soirée avec LaLaurie amène Queenie à s\'interroger sur sa place dans le Coven. Cordelia prend une décision fatidique au sujet de sa mère.'),(100,8,'La prise sacrée',8,'Alors que Fiona a du mal à faire face aux effets de ses médicaments, le reste du clan entreprend un rituel connu sous le nom de «prise sacrée» pour se préparer au prochain suprême. Cependant, Fiona doit se suicider pour que le rituel réussisse.'),(101,8,'Tête',9,'L\'attaquant de Cordelia est révélé. Fiona cherche à former une alliance avec Marie Laveau. Nan apprend une vérité troublante sur le passé de Luke.'),(102,8,'Les délices magiques de Stevie Nicks',10,'Fiona tente de sortir le nouveau Supreme avec la visite de Stevie Nicks. Cordelia apprend la vérité sur Hank et les chasseurs de sorcières. Madison essaie d\'éliminer sa concurrence pour la Suprématie.'),(103,8,'Protégez le Coven',11,'Fiona et Laveau ont une confrontation mortelle avec The Corporation. Cordelia fait un sacrifice désespéré pour protéger le Coven.'),(104,8,'Va au diable',12,'La dernière vision de Cordelia met l\'avenir du Coven en question. À l\'approche de la fin du règne de Fiona, les filles manifestent de nouveaux dons puissants. La recherche de Queenie pour Marie Laveau la mène en enfer et retour.'),(105,8,'Les sept merveilles',13,'Zoe, Madison, Misty et Queenie subissent le test des Sept Merveilles, sept défis magiques qui détermineront le prochain Suprême du clan.'),(106,9,'Monstres parmi nous',1,'Après le meurtre de leur mère, les jumeaux siamois Bette et Dot sont embauchés par Elsa Mars, propriétaire de freak show en difficulté.'),(107,9,'Massacres et matinées',2,'Avec un tueur en liberté, la police impose un couvre-feu à Jupiter. Elsa engage un homme fort, inconscient de son sombre passé avec Ethel.'),(108,9,'Edward Mordrake: Partie 1',3,'Elsa défie la superstition pour répéter Halloween, invoquant l\'esprit d\'Edward Mordrake et son groupe fantomatique de monstres.'),(109,9,'Edward Mordrake: Partie 2',4,'Mordrake cherche une âme bizarre à ajouter à sa troupe fantôme. Jimmy et Maggie ont une rencontre avec Twisty le clown.'),(110,9,'Petits gâteaux roses',5,'Stanley prépare un plan pour enlever et tuer les Tattlers. Cependant, Elsa a son propre plan pour se débarrasser des sœurs. Pendant ce temps, Dandy sélectionne sa première victime.'),(111,9,'Bullseye',6,'Elsa se prépare pour son émission de télévision en sortant un nouvel acte. Pendant ce temps, Paul poursuit la romance et les jumeaux s\'installent dans leur nouvelle maison.'),(112,9,'Test de force',7,'Après que Dell a attaqué l\'un des leurs, les femmes du camp planifient leur revanche. Stanley tente de faire chanter l\'un des monstres et Penny confronte son père.'),(113,9,'Bain de sang',8,'Les monstres pleurent la mort de l\'un des leurs, tandis qu\'Elsa accueille un nouvel interprète. Penny et ses nouveaux amis se vengent de son père.'),(114,9,'Massacre de la fête de Tupperware',9,'Jimmy se vautre dans l\'apitoiement sur lui-même et Dandy entreprend de détruire l\'homme qui l\'a privé de ses jumeaux. Pendant ce temps, Desiree rencontre une vieille flamme, et Elsa et Stanley suivent les Tattlers.'),(115,9,'Orphelins',10,'Un décès au camp pousse Elsa à chercher une nouvelle maison pour Pepper. Pendant ce temps, Desiree en a assez de l\'échec de Dell en tant que mari, et Stanley donne un coup de main à Jimmy.'),(116,9,'Pensée magique',11,'Un vendeur ambulant nommé Chester convainc Elsa de l\'engager comme magicien pour le spectacle. Les jumeaux jettent leur dévolu sur le nouveau venu, tandis que Dell et Eve aident Jimmy à s\'échapper.'),(117,9,'Afficher les bouchons',12,'Les monstres exigent la justice poétique après avoir appris les péchés de Stanley. Maggie essaie de faire amende honorable avec Jimmy, et Dandy donne aux Tattlers des informations troublantes sur Chester.'),(118,9,'Rappel',13,'Dandy se prépare pour sa première performance. Les Tattlers envisagent le mariage, tandis qu\'à Hollywood, Elsa découvre qu\'elle est plus que jamais amoureuse.'),(119,10,'Les bords de Sonnie',1,'Dans le monde souterrain des combats de \"bestioles\", Sonnie est imbattable - tant qu\'elle garde son avantage.'),(120,10,'Trois robots',2,'Longtemps après la chute de l\'humanité, trois robots se lancent dans une visite touristique d\'une ville post-apocalyptique.'),(121,10,'Le témoin',3,'Après avoir assisté à un meurtre brutal, une femme fuit le tueur dans les rues d\'une ville surréaliste.'),(122,10,'Costume',4,'Une communauté d\'agriculteurs utilise leurs mechs maison pour défendre leurs familles d\'une invasion extraterrestre'),(123,10,'Sucker of Souls',5,'Libéré par une fouille archéologique, un démon assoiffé de sang combat une équipe de mercenaires armés de ... chats?'),(124,10,'Quand le yogourt a pris le dessus',6,'Après que des scientifiques aient accidentellement créé du yogourt super intelligent, il a rapidement faim de domination mondiale.'),(125,10,'Au-delà de la faille Aquila',7,'En se réveillant après avoir voyagé à des années-lumière, l\'équipage d\'un navire a du mal à découvrir jusqu\'où il est venu.'),(126,10,'Bonne chasse',8,'Le fils d\'un chasseur d\'esprit forge un lien avec un huli jing qui change de forme.'),(127,10,'La déchetterie',9,'Ugly Dave appelle le dépotoir à la maison, et il n\'est pas sur le point de laisser un citadin le lui enlever.'),(128,10,'Changements de forme',10,'Profondément en Afghanistan, deux Marines aux pouvoirs surnaturels font face à une menace de l\'un des leurs.'),(129,10,'Coup de main',11,'Echouée en orbite, une astronaute doit choisir entre la vie et l\'intégrité physique avant que son oxygène ne s\'épuise.'),(130,10,'Nuit de poisson',12,'Après que leur voiture tombe en panne dans le désert, deux vendeurs entreprennent un voyage onirique à l\'aube des temps.'),(131,10,'Lucky 13',13,'Après que le drop-ship Lucky 13 ait perdu deux équipages, aucun pilote ne le piloterait ... mais les recrues n\'ont pas le choix.'),(132,10,'Bleu Zima',14,'L\'artiste renommé Zima raconte son passé mystérieux et sa notoriété avant de dévoiler son œuvre finale.'),(133,10,'Angle mort',15,'Une bande de voleurs cyborg met en scène un braquage à grande vitesse d\'un convoi lourdement blindé.'),(134,10,'Âge de glace',16,'Un jeune couple emménage dans un appartement et trouve une civilisation perdue dans leur ancien congélateur.'),(135,10,'Histoires alternatives',17,'Vous voulez voir Hitler mourir de différentes manières comiques et fantastiques? Maintenant vous pouvez. Bienvenue chez Multiversity!'),(136,10,'La guerre secrète',18,'Les unités d\'élite de l\'Armée rouge combattent un mal impie dans les anciennes forêts de Sibérie.'),(137,11,'Travail de nuit',1,'Londres 1891. Le célèbre explorateur Sir Malcolm Murray et l\'étrange beauté Vanessa Ives recrutent le tireur de précision américain Ethan Chandler et le Dr Victor Frankenstein pour les aider à rechercher quelqu\'un qui a été perdu.'),(138,11,'Séance',2,'Vanessa et Sir Malcolm rencontrent la mystérieusement belle Dorian Gray lors d\'une fête. Les choses changent cependant lorsque la médium renommée Madame Kali organise une séance. Pendant ce temps, Ethan se lie d\'amitié avec Mme Brona Croft, une jeune immigrante irlandaise.'),(139,11,'Résurrection',3,'Le Dr Frankenstein est confronté à son passé. Vanessa a une vision de Mina, qui mène à une étrange découverte au zoo de Londres.'),(140,11,'Demi-monde',4,'L\'engouement de Vanessa pour Dorian Gray grandit. Le professeur Van Helsing est embauché pour travailler avec le Dr Frankenstein. Fenton attire son maître dans le manoir de Sir Malcolm.'),(141,11,'Plus proche que les sœurs',5,'Vanessa se souvient de son passé et des événements qui ont finalement conduit à la disparition de Mina.'),(142,11,'Ce que la mort peut joindre',6,'La dernière vision de Vanessa conduit Sir Malcolm, Ethan et Sembene à une recherche. Le professeur Van Helsing révèle plus de détails au Dr Frankenstein sur qui a pris Mina.'),(143,11,'Possession',7,'Au cours de quatre semaines pénibles, Sir Malcolm, Ethan, le Dr Frankenstein et Sembene font tout ce qu\'ils peuvent pour sauver Vanessa de ce qui est en elle.'),(144,11,'Grand Guignol',8,'Après une vision du Grand Guignol, Vanessa, Sir Malcolm, Ethan, le Dr Frankenstein et Sembene explorent un théâtre vide - pour être confrontés à leurs pires cauchemars.'),(145,12,'Enfer frais',1,'Sir Malcolm revient pour trouver une nouvelle Vanessa chassant le mal.'),(146,12,'Verbis Diablo',2,'Une Vanessa hantée se tourne vers Sir Malcolm pour se réconforter. Pendant ce temps, Dorian Gray rencontre une femme intrigante avec un secret, Hecate cherche un prix pour sa mère - et Ferdinand Lyle révèle la trame de fond inquiétante du Verbis Diablo.'),(147,12,'Les Nightcomers',3,'Dans un flashback, Vanessa rencontre The Cut-Wife, qui réalise rapidement l\'étendue des pouvoirs de Vanessa et la met en garde contre le danger qui l\'attend - et le mal qui la poursuit.'),(148,12,'Les mauvais esprits dans les lieux célestes',4,'Lyle révèle comment l\'histoire du Verbis Diablo affecte Vanessa. Pendant ce temps, Hecate essaie de se rapprocher d\'Ethan; La romance d\'Angélique et Dorian grandit; et l\'inspecteur Rusk interroge l\'unique survivant du massacre de Mariner\'s Inn.'),(149,12,'Au-dessus du ciel voûté',5,'Vanessa, Ethan et Sir Malcolm protègent le manoir d\'une autre attaque. Pendant ce temps, Angélique est humiliée lors d\'une sortie avec Dorian et, alors qu\'Evelyn travaille sur un nouveau totem, Hecate retourne à sa mère avec un cadeau'),(150,12,'Horreurs glorieuses',6,'Sir Malcolm reçoit des nouvelles tragiques. Roper traque Ethan. Dorian organise un somptueux bal en l\'honneur d\'Angélique. Et une nuit glorieuse se transforme en horreur pour Vanessa.'),(151,12,'Petit Scorpion',7,'Vanessa et Ethan fuient Londres pour le cottage de Cut-Wife; une figure du passé refait surface.'),(152,12,'Memento Mori',8,'La créature déchaîne sa rage; Sir Malcolm affronte Evelyn.'),(153,12,'Et l\'enfer est mon seul ennemi',9,'Vanessa va seule combattre Evelyn afin de sauver Sir Malcolm.'),(154,12,'Et ils étaient des ennemis',10,'Vanessa doit compter sur sa force pour vaincre le démon.'),(155,13,'Le jour où Tennyson est mort',1,'Avec Ethan, Sir Malcolm et le Dr Frankenstein maintenant dispersés à travers le monde face à leurs propres démons, Vanessa brisée et découragée demande l\'aide du Dr Seward pour combattre un nouveau mal.'),(156,13,'Prédateurs éloignés et proches',2,'Sir Malcolm continue son voyage avec l\'énigmatique Kaetenay. Pendant ce temps, Ethan reçoit une aide inattendue de Hecate, Drs. Frankenstein et Jekyll élaborent un plan et à son insu, les forces du mal suivent chaque mouvement de Vanessa.'),(157,13,'Good and Evil Braided Be',3,'Vanessa Ives est confrontée à un visage familier qui révélera un indice sur son passé.'),(158,13,'Un brin d\'herbe',4,'Avec l\'aide du Dr Seward, Vanessa subit une hypnose pour revivre son séjour à la clinique d\'interdiction.'),(159,13,'Ce monde est notre enfer',5,'Traqué à travers le désert par Kaetenay et d\'autres, Ethan fait face à un jugement. À Londres, Victor apporte une modification dramatique au remède de Jekyll à la folie.'),(160,13,'Aucune bête si féroce',6,'Vanessa contacte son vieil ami Ferdinand Lyle pour obtenir de l\'aide. Lyle la présente à Catriona Hartdegen. Lily, Dorian et Justine ont mis leur plan en marche. Ethan, Sir Malcolm et Hecate arrivent au ranch de Talbot.'),(161,13,'Marée descendante',7,'Lily envoie sa légion de femmes dans une mission horrible, Vanessa fait un choix inquiétant et les visions de Kaetenay conduisent Ethan vers son destin.'),(162,13,'Nuit perpétuelle',8,'Alors qu\'une peste apocalyptique enveloppe Londres, Victor décide du sort de Lily et Ethan se retrouve face à face avec le mal qui séduit Vanessa.'),(163,13,'L\'obscurité bénie',9,'Sir Malcolm et ses alliés combattent le démon qui revendique Vanessa, la créature fait face à une demande funeste et Ethan fait un choix déchirant.');
-/*!40000 ALTER TABLE `episode` ENABLE KEYS */;
+LOCK TABLES `image` WRITE;
+/*!40000 ALTER TABLE `image` DISABLE KEYS */;
+INSERT INTO `image` VALUES (1,'https://cdn.pixabay.com/photo/2014/12/26/10/50/flame-580342_960_720.jpg','gaz'),(2,'https://cdn.pixabay.com/photo/2018/01/24/17/33/light-bulb-3104355_960_720.jpg','electricite'),(3,'https://cdn.pixabay.com/photo/2017/01/18/12/33/session-1989711_960_720.png','test qcm\n'),(4,'https://cdn.pixabay.com/photo/2017/09/24/15/54/butterfly-2782239_960_720.jpg','papillon\n');
+/*!40000 ALTER TABLE `image` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `program`
+-- Table structure for table `practical_work`
 --
 
-DROP TABLE IF EXISTS `program`;
+DROP TABLE IF EXISTS `practical_work`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `program` (
+CREATE TABLE `practical_work` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `quizz_id` int NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `summary` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `poster` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `category_id` int NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_free` tinyint(1) NOT NULL DEFAULT '0',
+  `theme_id` int NOT NULL,
+  `is_random` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  KEY `IDX_92ED778412469DE2` (`category_id`),
-  CONSTRAINT `FK_92ED778412469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `UNIQ_500501A0BA934BCD` (`quizz_id`),
+  KEY `IDX_500501A059027487` (`theme_id`),
+  CONSTRAINT `FK_500501A059027487` FOREIGN KEY (`theme_id`) REFERENCES `theme` (`id`),
+  CONSTRAINT `FK_500501A0BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `program`
+-- Dumping data for table `practical_work`
 --
 
-LOCK TABLES `program` WRITE;
-/*!40000 ALTER TABLE `program` DISABLE KEYS */;
-INSERT INTO `program` VALUES (1,'Walking Dead','Le policier Rick Grimes se réveille après un long coma. Il découvre avec effarement que le monde, ravagé par une épidémie, est envahi par les morts-vivants.','https://m.media-amazon.com/images/M/MV5BZmFlMTA0MmUtNWVmOC00ZmE1LWFmMDYtZTJhYjJhNGVjYTU5XkEyXkFqcGdeQXVyMTAzMDM4MjM0._V1_.jpg',1),(2,'The Haunting Of Hill House','Plusieurs frères et sœurs qui, enfants, ont grandi dans la demeure qui allait devenir la maison hantée la plus célèbre des États-Unis, sont contraints de se réunir pour finalement affronter les fantômes de leur passé.','https://m.media-amazon.com/images/M/MV5BMTU4NzA4MDEwNF5BMl5BanBnXkFtZTgwMTQxODYzNjM@._V1_SY1000_CR0,0,674,1000_AL_.jpg',1),(3,'American Horror Story','A chaque saison, son histoire. American Horror Story nous embarque dans des récits à la fois poignants et cauchemardesques, mêlant la peur, le gore et le politiquement correct.','https://m.media-amazon.com/images/M/MV5BODZlYzc2ODYtYmQyZS00ZTM4LTk4ZDQtMTMyZDdhMDgzZTU0XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',1),(4,'Love Death And Robots','Un yaourt susceptible, des soldats lycanthropes, des robots déchaînés, des monstres-poubelles, des chasseurs de primes cyborgs, des araignées extraterrestres et des démons assoiffés de sang : tout ce beau monde est réuni dans 18 courts métrages animés déconseillés aux âmes sensibles.','https://m.media-amazon.com/images/M/MV5BMTc1MjIyNDI3Nl5BMl5BanBnXkFtZTgwMjQ1OTI0NzM@._V1_SY1000_CR0,0,674,1000_AL_.jpg',1),(5,'Penny Dreadful','Dans le Londres ancien, Vanessa Ives, une jeune femme puissante aux pouvoirs hypnotiques, allie ses forces à celles d\'Ethan, un garçon rebelle et violent aux allures de cowboy, et de Sir Malcolm, un vieil homme riche aux ressources inépuisables.  Ensemble, ils combattent un ennemi inconnu, presque invisible, qui ne semble pas humain et qui massacre la population.','https://m.media-amazon.com/images/M/MV5BNmE5MDE0ZmMtY2I5Mi00Y2RjLWJlYjMtODkxODQ5OWY1ODdkXkEyXkFqcGdeQXVyNjU2NjA5NjM@._V1_SY1000_CR0,0,695,1000_AL_.jpg',1),(6,'Fear The Walking Dead','La série se déroule au tout début de l épidémie relatée dans la série-mère The Walking Dead et se passe dans la ville de Los Angeles, et non à Atlanta. Madison est conseillère dans un lycée de Los Angeles. Depuis la mort de son mari, elle élève seule ses deux enfants : Alicia, excellente élève qui découvre les premiers émois amoureux, et son grand frère Nick qui a quitté la fac et a sombré dans la drogue.','https://m.media-amazon.com/images/M/MV5BYWNmY2Y1NTgtYTExMS00NGUxLWIxYWQtMjU4MjNkZjZlZjQ3XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',1),(7,'Sex Education','Un adolescent avec une mère sexothérapeute fait équipe avec un camarade de classe du secondaire pour mettre en place une clinique souterraine de sexothérapie à l\'école.','https://fr.web.img5.acsta.net/r_1920_1080/pictures/20/01/08/09/31/0501142.jpg',3),(8,'Game of thrones','Neuf familles nobles se battent pour le contrôle des terres de Westeros, tandis qu\'un ancien ennemi revient après avoir dormi pendant des millénaires.','https://images-na.ssl-images-amazon.com/images/I/91LnYdUotcL._AC_SL1500_.jpg',4);
-/*!40000 ALTER TABLE `program` ENABLE KEYS */;
+LOCK TABLES `practical_work` WRITE;
+/*!40000 ALTER TABLE `practical_work` DISABLE KEYS */;
+INSERT INTO `practical_work` VALUES (2,2,'tp-1','<h1>test</h1>',0,1,0);
+/*!40000 ALTER TABLE `practical_work` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `season`
+-- Table structure for table `quizz`
 --
 
-DROP TABLE IF EXISTS `season`;
+DROP TABLE IF EXISTS `quizz`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `season` (
+CREATE TABLE `quizz` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `program_id` int NOT NULL,
-  `number` int NOT NULL,
-  `year` int NOT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `theme_id` int NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sequence` int NOT NULL,
+  `is_free` tinyint(1) NOT NULL DEFAULT '0',
+  `is_practical_work` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `IDX_F0E45BA93EB8070A` (`program_id`),
-  CONSTRAINT `FK_F0E45BA93EB8070A` FOREIGN KEY (`program_id`) REFERENCES `program` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `IDX_7C77973D59027487` (`theme_id`),
+  CONSTRAINT `FK_7C77973D59027487` FOREIGN KEY (`theme_id`) REFERENCES `theme` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `season`
+-- Dumping data for table `quizz`
 --
 
-LOCK TABLES `season` WRITE;
-/*!40000 ALTER TABLE `season` DISABLE KEYS */;
-INSERT INTO `season` VALUES (1,1,1,2010,'Après avoir été blessé dans l’exercice de ses fonctions, le shérif Rick Grimes se réveille d’un coma de plusieurs semaines et découvre un monde post-apocalyptique où la quasi-totalité de la population américaine s’est transformée en zombies. Seul et déboussolé, Rick se rend à Atlanta pour rechercher sa femme Lori et son fils Carl. Sur son chemin, il fera la rencontre d’autres survivants avec lesquels il tentera de rester en vie dans ce monde métamorphosé, effrayant et périlleux.'),(2,1,2,2011,'A la suite de l’explosion du CDC, Rick et son groupe fuient Atlanta alors que la ville est infestée de zombies. Confrontés à une nouvelle menace, ces derniers trouvent refuge dans la ferme d’Hershel Greene, un homme dont la famille cache un terrible secret. Mais les liens du groupe sont mis à rude épreuve lorsque des tensions éclatent entre les survivants et les habitants de la ferme, mais également entre Rick et Shane.'),(3,1,3,2012,'Quelques mois après avoir abandonné la ferme d’Hershel, Rick et sa communauté de survivants découvrent une prison abandonnée dans laquelle s’installer. Mais la sécurité du groupe se trouve rapidement menacée par la communauté voisine dirigée par un homme impitoyable, surnommé le Gouverneur.'),(4,1,4,2013,'Plusieurs mois se sont écoulés depuis l’attaque du Gouverneur et la vie reprend peu à peu son cours à la prison. Lorsqu’un événement tragique oblige les survivants à se séparer et à emprunter des chemins différents, la survie devient plus périlleuse. Confrontés à de nouveaux dangers et ennemis, ils devront faire face à des choix difficiles.'),(5,2,1,2018,'Durant l’été 1992, Hugh et Olivia Crain s’installent avec leurs cinq enfants dans le manoir de Hill House. Mais des événements paranormaux et des pertes tragiques vont les obliger à quitter la demeure. Vingt-six ans plus tard, alors qu’une tragédie survient, les membres de cette famille éclatée sont à nouveau réunis dans cette maison, et sont contraints de faire face aux souvenirs d’événements terrifiants survenus autrefois.'),(6,3,1,2011,'La famille Harmon, composée d’un psychiatre pervers, de sa femme meurtrie et de leur fille dépressive, s’installe dans un manoir hanté à Los Angeles, après l’adultère du père et la fausse couche de la mère. Les esprits rôdent et sont bien décidés à les torturer afin de les confronter à leurs plus grandes peurs.'),(7,3,2,2012,'A Briarcliff, institut psychiatrique dirigé d’une main de fer par Sœur Jude, les péchés du passé remontent à la surface tandis que le désir et les interdits rôdent dans chaque recoin. L’arrivée du tueur Bloody Face va venir perturber l’équilibre déjà instable de l’établissement. Entre religieuses sadiques, esprits démoniaques, nymphomanes, psychopathes pathologiques, criminels de guerre et praticiens aux mœurs perverses, les plus dangereux criminels ne sont pas forcément ceux que l’on croit.'),(8,3,3,2013,'Trois cents ans se sont écoulés depuis la chasse aux sorcières de Salem, et celles qui ont réussi à s’échapper sont maintenant menacées d’extinction. A la Nouvelle-Orléans, l’École pour jeunes filles exceptionnelles de Madame Robichaux accueille les plus jeunes sorcières, dont Zoé qui cache un lourd secret. Accompagnée de Madison Montgomery, de Nan et de Queenie, Zoé devra apprendre à se défendre et à survivre dans le monde moderne. Alors qu’une jeune sorcière est brûlée vive sur un bûcher, Fiona, la plus puissante sorcière de sa génération, revient en ville pour protéger son espèce de l’éradication.'),(9,3,4,2014,'1952, dans la petite ville paisible de Jupiter, en Floride. Une des dernières troupes de saltimbanques ambulants, menée par Miss Elsa Mars et composée d’êtres difformes hors du commun, arrive en ville. Leur venue coïncide avec une série de meurtres horribles commis par un être maléfique qui menace aussi bien les habitants que la troupe. Les artistes de ce cirque différent vont devoir tout faire pour préserver leur vie dans un monde où ils n’ont plus leur place.'),(10,4,1,2019,'Un yaourt susceptible, des soldats lycanthropes, des robots déchaînés, des monstres-poubelles, des chasseurs de primes cyborgs, des araignées extraterrestres et des démons de l\'enfer assoiffés de sang : tout ce beau monde est réuni dans 18 courts d\'animation déconseillés aux âmes sensibles.'),(11,5,1,2014,'Londres, 1891. Vanessa Ives, une jeune femme aux pouvoirs puissants et hypnotiques, s’allie à Ethan Chandler, un homme rebelle et violent, ainsi qu’à Sir Malcolm, un homme riche d’un certain âge aux ressources intarissables. Ensemble, ils combattent une menace quasi invisible qui massacre la population.'),(12,5,2,2015,'Alors que les étranges pouvoirs de Vanessa Ives se développent, des forces sournoises lancent des sorts à ses proches. Dans ce monde troublant, où les personnages les plus emblématiques et terrifiants de la littérature errent dans les rues, des alliances improbables se forment pour combattre des tentations inimaginables.'),(13,5,3,2016,'Et si le seul moyen de combattre nos démons était de les laisser prendre le dessus ? Confrontés à de nouvelles atrocités dans de nouvelles contrées, Ethan Chandler, Dr. Frankenstein, Dorian Gray, Sir Malcolm, la Créature ainsi que la funeste Lily doivent chacun affronter et ne faire plus qu’un avec la facette la plus monstrueuse de leur personnalité. Mais pour Vanessa Ives, accepter ses démons pourrait lui coûter très cher et plonger le monde dans d’éternelles ténèbres.'),(14,6,1,2015,'A Los Angeles, Nick Clark, un jeune toxicomane qui accumule les problèmes, se réveille dans une église abandonnée et découvre son amie en train de dévorer la mâchoire d’un cadavre. Révélant ce qu’il a vu, sa famille pense qu’il s’agit d’hallucinations liées à sa consommation de drogue, même si de nombreux phénomènes étranges se produisent en ville. Mais Madison, sa mère, qui ne croit pas les histoires de son fils et encore moins les rumeurs d’épidémie mortelle qui courent dans le lycée où elle travaille, se rend vite compte que l’apocalypse vient de débuter.');
-/*!40000 ALTER TABLE `season` ENABLE KEYS */;
+LOCK TABLES `quizz` WRITE;
+/*!40000 ALTER TABLE `quizz` DISABLE KEYS */;
+INSERT INTO `quizz` VALUES (1,1,'test-quiz',1,0,0),(2,1,'quizz-2',1,0,1);
+/*!40000 ALTER TABLE `quizz` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `quizz_answer`
+--
+
+DROP TABLE IF EXISTS `quizz_answer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `quizz_answer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quizz_question_id` int NOT NULL,
+  `answer` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_good` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `IDX_80226C343832395C` (`quizz_question_id`),
+  CONSTRAINT `FK_80226C343832395C` FOREIGN KEY (`quizz_question_id`) REFERENCES `quizz_question` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `quizz_answer`
+--
+
+LOCK TABLES `quizz_answer` WRITE;
+/*!40000 ALTER TABLE `quizz_answer` DISABLE KEYS */;
+INSERT INTO `quizz_answer` VALUES (1,1,'rep 1 true',1),(2,1,'rep 2',0),(3,1,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0),(4,1,'rep 3',0),(5,2,'rep 1 true',1),(6,2,'rep 2',0),(7,2,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(8,2,'rep 3',0),(9,3,'rep 1 true',1),(10,3,'rep 2',0),(11,3,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(12,3,'rep 3',0),(13,4,'rep 1 true',1),(14,4,'rep 2',0),(15,4,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(16,4,'rep 3',0),(17,5,'rep 1 true',1),(18,5,'rep 2',0),(19,5,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0),(20,5,'rep 3',0),(21,6,'rep 1 true',1),(22,6,'rep 2',0),(23,6,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(24,6,'rep 3',0),(25,7,'rep 1 true',1),(26,7,'rep 2',0),(27,7,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(28,7,'rep 3',0),(29,8,'rep 1 true',1),(30,8,'rep 2',0),(31,8,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(32,8,'rep 3',0),(33,9,'rep 1 true',1),(34,9,'rep 2',0),(35,9,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0),(36,9,'rep 3',0),(37,10,'rep 1 true',1),(38,10,'rep 2',0),(39,10,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(40,10,'rep 3',0),(41,11,'rep 1 true',1),(42,11,'rep 2',0),(43,11,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(44,11,'rep 3',0),(45,12,'rep 1 true',1),(46,12,'rep 2',0),(47,12,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(48,12,'rep 3',0),(49,12,'rep 1 true',1),(50,12,'rep 2',0),(51,12,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0),(52,12,'rep 3',0),(53,13,'rep 1 true',1),(54,13,'rep 2',0),(55,13,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(56,13,'rep 3',0),(57,14,'rep 1 true',1),(58,14,'rep 2',0),(59,14,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(60,14,'rep 3',0),(61,15,'rep 1 true',1),(62,15,'rep 2',0),(63,15,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(64,15,'rep 3',0),(65,16,'rep 1 true',1),(66,16,'rep 2',0),(67,16,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',0),(68,16,'rep 3',0),(69,17,'rep 1 true',1),(70,17,'rep 2',0),(71,17,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(72,17,'rep 3',0),(73,18,'rep 1 true',1),(74,18,'rep 2',0),(75,18,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(76,18,'rep 3',0),(77,19,'rep 1 true',1),(78,19,'rep 2',0),(79,19,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(80,19,'rep 3',0),(81,20,'rep 1 true',1),(82,20,'rep 2',0),(83,20,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',1),(84,20,'rep 3',0),(85,21,'rep',1),(86,22,'rep',1);
+/*!40000 ALTER TABLE `quizz_answer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `quizz_question`
+--
+
+DROP TABLE IF EXISTS `quizz_question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `quizz_question` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `question` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quizz_id` int NOT NULL,
+  `image_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_3723B55C3DA5256D` (`image_id`),
+  KEY `IDX_3723B55CBA934BCD` (`quizz_id`),
+  CONSTRAINT `FK_3723B55C3DA5256D` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`),
+  CONSTRAINT `FK_3723B55CBA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `quizz_question`
+--
+
+LOCK TABLES `quizz_question` WRITE;
+/*!40000 ALTER TABLE `quizz_question` DISABLE KEYS */;
+INSERT INTO `quizz_question` VALUES (1,'Test pour une question à choix simple?',1,NULL),(2,'Test pour une question à choix multiple?',1,NULL),(3,'Test pour une question à choix simple?',1,NULL),(4,'Test pour une question à choix multiple?',1,NULL),(5,'Test pour une question à choix simple?',1,NULL),(6,'Test pour une question à choix multiple?',1,NULL),(7,'Test pour une question à choix simple?',1,NULL),(8,'Test pour une question à choix multiple?',1,NULL),(9,'Test pour une question à choix simple?',1,NULL),(10,'Test pour une question à choix multiple?',1,NULL),(11,'Test pour une question à choix simple?',1,NULL),(12,'Test pour une question à choix multiple?',1,NULL),(13,'Test pour une question à choix simple?',1,NULL),(14,'Test pour une question à choix multiple?',1,NULL),(15,'Test pour une question à choix simple?',1,NULL),(16,'Test pour une question à choix multiple?',1,NULL),(17,'Test pour une question à choix simple?',1,NULL),(18,'Test pour une question à choix multiple?',1,NULL),(19,'Test pour une question à choix simple?',1,NULL),(20,'Test pour une question à choix multiple?',1,4),(21,'Q quiz 2',2,NULL),(22,'Q quizz 2',2,NULL);
+/*!40000 ALTER TABLE `quizz_question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `resource`
+--
+
+DROP TABLE IF EXISTS `resource`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `resource` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `url` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resource`
+--
+
+LOCK TABLES `resource` WRITE;
+/*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+INSERT INTO `resource` VALUES (1,'https://cdn.futura-sciences.com/buildsv6/images/wide1920/a/0/f/a0fc73919d_50166390_chaton.jpg');
+/*!40000 ALTER TABLE `resource` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `resource_quizz_question`
+--
+
+DROP TABLE IF EXISTS `resource_quizz_question`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `resource_quizz_question` (
+  `resource_id` int NOT NULL,
+  `quizz_question_id` int NOT NULL,
+  PRIMARY KEY (`resource_id`,`quizz_question_id`),
+  KEY `IDX_456D3EFF89329D25` (`resource_id`),
+  KEY `IDX_456D3EFF3832395C` (`quizz_question_id`),
+  CONSTRAINT `FK_456D3EFF3832395C` FOREIGN KEY (`quizz_question_id`) REFERENCES `quizz_question` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_456D3EFF89329D25` FOREIGN KEY (`resource_id`) REFERENCES `resource` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resource_quizz_question`
+--
+
+LOCK TABLES `resource_quizz_question` WRITE;
+/*!40000 ALTER TABLE `resource_quizz_question` DISABLE KEYS */;
+INSERT INTO `resource_quizz_question` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13),(1,14),(1,15),(1,16),(1,17),(1,18),(1,19),(1,20),(1,21),(1,22);
+/*!40000 ALTER TABLE `resource_quizz_question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subscription`
+--
+
+DROP TABLE IF EXISTS `subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subscription` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscription`
+--
+
+LOCK TABLES `subscription` WRITE;
+/*!40000 ALTER TABLE `subscription` DISABLE KEYS */;
+INSERT INTO `subscription` VALUES (1,'QCM','tous les QCM sont disponibles',25),(2,'QCM et TP','tous les QCM et TP sont disponibles',35);
+/*!40000 ALTER TABLE `subscription` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `theme`
+--
+
+DROP TABLE IF EXISTS `theme`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `theme` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_9775E7083DA5256D` (`image_id`),
+  CONSTRAINT `FK_9775E7083DA5256D` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `theme`
+--
+
+LOCK TABLES `theme` WRITE;
+/*!40000 ALTER TABLE `theme` DISABLE KEYS */;
+INSERT INTO `theme` VALUES (1,'test-qcm',3),(2,'gaz',1),(3,'sans image',NULL);
+/*!40000 ALTER TABLE `theme` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(180) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `roles` json NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(55) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activate` tinyint(1) NOT NULL DEFAULT '0',
+  `activation_token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (5,'admin@gmail.com','[\"ROLE_ADMIN\"]','$argon2id$v=19$m=65536,t=4,p=1$nXYbVBjWl3IjGdLad7+Mqg$2I2u/R0Yy4URtXREFkBtnAcaN7lSqdEqliYEsuM2nbI','Manon','Marizy',1,'3ea0ea37e4710edfe8e6aff0e00238c6'),(14,'test@gmail.com','[\"ROLE_USER\"]','$argon2id$v=19$m=65536,t=4,p=1$2/diqAhnG5K5NANEYozSIw$QgE0KsRYJl8Z5uH/UbXiS8PnEDR+XHvpQH8t520NbPU','Manon','Marizy',1,'81e79bb6f6813c9da0c28917a2df6fa6'),(15,'test2@gmail.om','[\"ROLE_USER\"]','$argon2id$v=19$m=65536,t=4,p=1$9l8v7/JEh/MS1c2+76j3MA$8KmkS+4WDT32l4qm+OtdAaCfSXI0QSkeqbp/sBcrqbI','Manon','ma',1,'6b5456476c013b9e3d67812acb1c3012'),(16,'test3@gmail.com','[\"ROLE_USER\"]','$argon2id$v=19$m=65536,t=4,p=1$NeeXzI581K5Hk3YSOLrpaQ$rlB63hzNfzCnDCsC1/YPYf+WlppTn6gYRbzSTkRnwW8','Manon','Ma',1,'4e878c66e331fcd5865e167d68ea8d6f'),(17,'testdemo@gmail.com','[\"ROLE_USER\"]','$argon2id$v=19$m=65536,t=4,p=1$RKwe0J4JckMkvG8EbKM6Sg$4pbF4FPy828JtdqFkWasyYcN7XaYIxu4HDpLXyy7B1c','MrTest','Test1',1,'50759c0dd53e6ac716e258c79f97fbc6');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_quizz_answer`
+--
+
+DROP TABLE IF EXISTS `user_quizz_answer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_quizz_answer` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `question_answer` json NOT NULL,
+  `quizz_try_number` int NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `finished_at` datetime DEFAULT NULL,
+  `user_id` int NOT NULL,
+  `quizz_id` int NOT NULL,
+  `quizz_question_id` int NOT NULL,
+  `answered_right` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `IDX_EE1036A76ED395` (`user_id`),
+  KEY `IDX_EE1036BA934BCD` (`quizz_id`),
+  KEY `IDX_EE10363832395C` (`quizz_question_id`),
+  CONSTRAINT `FK_EE10363832395C` FOREIGN KEY (`quizz_question_id`) REFERENCES `quizz_question` (`id`),
+  CONSTRAINT `FK_EE1036A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `FK_EE1036BA934BCD` FOREIGN KEY (`quizz_id`) REFERENCES `quizz` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_quizz_answer`
+--
+
+LOCK TABLES `user_quizz_answer` WRITE;
+/*!40000 ALTER TABLE `user_quizz_answer` DISABLE KEYS */;
+INSERT INTO `user_quizz_answer` VALUES (9,'[57, 59]',1,'2021-01-10 11:18:48','2021-01-10 11:28:30',14,1,14,1),(10,'[18]',1,'2021-01-10 11:35:43','2021-01-10 11:35:47',14,1,5,0),(11,'[30, 31]',1,'2021-01-10 11:35:49','2021-01-10 11:36:04',14,1,8,0),(12,'[41, 43]',1,'2021-01-10 11:36:05','2021-01-10 11:36:25',14,1,11,1),(13,'[69, 71]',1,'2021-01-10 11:36:26','2021-01-10 11:36:29',14,1,17,1),(14,'[35]',1,'2021-01-10 11:36:30','2021-01-10 14:50:29',14,1,9,0),(15,'[78, 80]',1,'2021-01-10 11:36:35','2021-01-10 11:36:39',14,1,19,0),(16,'[37, 40]',1,'2021-01-10 11:36:40','2021-01-10 11:36:43',14,1,10,0),(17,'[61, 63]',1,'2021-01-10 11:36:43','2021-01-10 11:36:46',14,1,15,1),(18,'[13, 15]',1,'2021-01-10 11:36:47','2021-01-10 11:36:49',14,1,4,1),(19,'[2]',1,'2021-01-10 11:36:50','2021-01-10 11:36:52',14,1,1,0),(20,'[9, 11]',1,'2021-01-10 11:36:53','2021-01-10 11:36:55',14,1,3,1),(21,'[21, 22]',1,'2021-01-10 11:36:56','2021-01-10 11:37:25',14,1,6,0),(22,'[27]',1,'2021-01-10 11:37:25','2021-01-10 11:37:29',14,1,7,0),(23,'[45, 47, 49, 51]',1,'2021-01-10 11:37:29','2021-01-10 11:38:15',14,1,12,0),(24,'[5, 6]',1,'2021-01-10 11:38:17','2021-01-10 11:38:20',14,1,2,0),(25,'[53, 55]',1,'2021-01-10 11:38:21','2021-01-10 11:38:23',14,1,13,1),(26,'[81, 83]',1,'2021-01-10 11:38:24','2021-01-10 11:38:27',14,1,20,1),(27,'[73, 75]',1,'2021-01-10 11:38:27','2021-01-10 11:38:29',14,1,18,1),(28,'[66]',1,'2021-01-10 11:38:30','2021-01-10 11:38:32',14,1,16,0),(29,'[35]',2,'2021-01-10 14:49:49','2021-01-10 14:52:30',14,1,9,0),(30,'[42, 43]',2,'2021-01-10 14:52:31','2021-01-10 14:52:35',14,1,11,0),(31,'[63]',2,'2021-01-10 14:52:36','2021-01-10 14:52:38',14,1,15,0),(32,'[15]',2,'2021-01-10 14:52:39','2021-01-10 14:52:42',14,1,4,0),(33,'[]',2,'2021-01-10 14:52:42','2021-01-10 14:52:44',14,1,18,0),(34,'[]',2,'2021-01-10 14:52:49','2021-01-10 14:52:50',14,1,7,0),(35,'[]',2,'2021-01-10 14:52:51','2021-01-10 14:52:53',14,1,20,0),(36,'[]',2,'2021-01-10 14:52:54','2021-01-10 14:52:55',14,1,2,0),(37,'[]',2,'2021-01-10 14:52:55','2021-01-10 14:52:57',14,1,6,0),(38,'[]',2,'2021-01-10 14:52:58','2021-01-10 14:53:00',14,1,12,0),(39,'[]',2,'2021-01-10 14:53:00','2021-01-10 14:53:02',14,1,1,0),(40,'[]',2,'2021-01-10 14:53:03','2021-01-10 14:53:04',14,1,10,0),(41,'[]',2,'2021-01-10 14:53:05','2021-01-10 14:53:07',14,1,5,0),(42,'[]',2,'2021-01-10 14:53:07','2021-01-10 14:53:08',14,1,17,0),(43,'[]',2,'2021-01-10 14:53:09','2021-01-10 14:53:09',14,1,14,0),(44,'[]',2,'2021-01-10 14:53:09','2021-01-10 14:53:13',14,1,3,0),(45,'[]',2,'2021-01-10 14:53:14','2021-01-10 14:53:15',14,1,19,0),(46,'[]',2,'2021-01-10 14:53:15','2021-01-10 14:53:17',14,1,16,0),(47,'[]',2,'2021-01-10 14:53:18','2021-01-10 14:53:19',14,1,13,0),(48,'[]',2,'2021-01-10 14:53:20','2021-01-10 14:53:22',14,1,8,0),(49,'[]',3,'2021-01-10 14:55:41','2021-01-10 14:55:43',14,1,3,0),(50,'[15]',3,'2021-01-10 14:56:37','2021-01-10 15:30:18',14,1,4,0),(51,'[65]',3,'2021-01-10 15:30:34','2021-01-10 15:34:21',14,1,16,1),(52,'[26]',3,'2021-01-10 15:34:24','2021-01-10 16:32:33',14,1,7,0),(53,'[81]',3,'2021-01-10 16:32:34','2021-01-10 16:36:09',14,1,20,0),(54,'[18]',3,'2021-01-10 16:38:03','2021-01-10 16:38:07',14,1,5,0),(55,'[58]',3,'2021-01-10 16:39:11','2021-01-10 16:39:14',14,1,14,0),(56,'[78]',3,'2021-01-10 16:39:20','2021-01-10 16:39:31',14,1,19,0),(57,'[46, 52]',3,'2021-01-10 16:39:33','2021-01-10 16:43:50',14,1,12,0),(58,'[5, 6]',3,'2021-01-10 16:43:52','2021-01-10 16:47:06',14,1,2,0),(59,'[34]',3,'2021-01-10 16:47:07','2021-01-10 16:47:51',14,1,9,0),(60,'[41, 42]',3,'2021-01-10 16:47:52','2021-01-10 16:48:47',14,1,11,0),(61,'[29, 30]',3,'2021-01-10 16:48:48','2021-01-10 16:49:12',14,1,8,0),(62,'[69]',3,'2021-01-10 16:49:13','2021-01-10 16:50:16',14,1,17,0),(63,'[21]',3,'2021-01-10 16:50:17','2021-01-10 16:50:45',14,1,6,0),(64,'[62]',3,'2021-01-10 16:50:45','2021-01-10 16:52:08',14,1,15,0),(65,'[53, 54]',3,'2021-01-10 16:53:08','2021-01-10 16:53:13',14,1,13,0),(66,'[37]',3,'2021-01-10 16:53:14','2021-01-10 16:54:08',14,1,10,0),(67,'[1]',3,'2021-01-10 16:54:09','2021-01-10 16:54:58',14,1,1,1),(68,'[73, 74]',3,'2021-01-10 16:54:59','2021-01-10 16:55:45',14,1,18,0),(69,'[5, 6]',4,'2021-01-10 16:56:01','2021-01-10 16:56:39',14,1,2,0),(70,'[65]',4,'2021-01-10 16:56:40','2021-01-10 16:58:47',14,1,16,1),(71,'[25]',4,'2021-01-10 16:58:48','2021-01-10 16:58:57',14,1,7,0),(72,'[74]',4,'2021-01-10 16:58:57','2021-01-10 16:59:47',14,1,18,0),(73,'[1]',4,'2021-01-10 16:59:48','2021-01-10 16:59:58',14,1,1,1),(74,'[34]',4,'2021-01-10 16:59:59','2021-01-10 17:00:05',14,1,9,0),(75,'[58]',4,'2021-01-10 17:00:05','2021-01-10 17:00:07',14,1,14,0),(76,'[78]',4,'2021-01-10 17:00:08','2021-01-10 17:00:09',14,1,19,0),(77,'[22]',4,'2021-01-10 17:00:10','2021-01-10 17:00:11',14,1,6,0),(78,'[54]',4,'2021-01-10 17:00:12','2021-01-10 17:00:13',14,1,13,0),(79,'[14]',4,'2021-01-10 17:00:13','2021-01-10 17:00:15',14,1,4,0),(80,'[62]',4,'2021-01-10 17:00:16','2021-01-10 17:00:17',14,1,15,0),(81,'[70]',4,'2021-01-10 17:00:18','2021-01-10 17:00:19',14,1,17,0),(82,'[30]',4,'2021-01-10 17:00:20','2021-01-10 17:00:21',14,1,8,0),(83,'[46]',4,'2021-01-10 17:00:22','2021-01-10 17:00:24',14,1,12,0),(84,'[38]',4,'2021-01-10 17:00:24','2021-01-10 17:00:26',14,1,10,0),(85,'[18]',4,'2021-01-10 17:00:26','2021-01-10 17:00:28',14,1,5,0),(86,'[42]',4,'2021-01-10 17:00:28','2021-01-10 17:00:30',14,1,11,0),(87,'[10]',4,'2021-01-10 17:00:31','2021-01-10 17:00:32',14,1,3,0),(89,'[81]',4,'2021-01-10 17:01:54','2021-01-10 17:03:03',14,1,20,0),(90,'[81]',5,'2021-01-10 17:03:43','2021-01-10 17:05:31',14,1,20,0),(91,'[73]',5,'2021-01-10 17:05:33','2021-01-11 14:48:24',14,1,18,0),(92,'[77, 78]',5,'2021-01-11 14:49:17','2021-01-12 09:40:07',14,1,19,0),(93,'[18]',5,'2021-01-12 09:40:23','2021-01-12 09:43:41',14,1,5,0),(94,'[34]',5,'2021-01-12 09:43:42','2021-01-12 09:43:44',14,1,9,0),(95,'[53]',5,'2021-01-12 09:43:44','2021-01-12 09:43:47',14,1,13,0),(96,'[10]',5,'2021-01-12 09:43:49','2021-01-12 09:43:51',14,1,3,0),(97,'[38]',5,'2021-01-12 09:43:52','2021-01-12 09:43:54',14,1,10,0),(98,'[58]',5,'2021-01-12 09:43:54','2021-01-12 09:43:56',14,1,14,0),(99,'[46, 49]',5,'2021-01-12 09:43:56','2021-01-12 09:43:58',14,1,12,0),(100,'[2]',5,'2021-01-12 09:43:59','2021-01-12 09:44:01',14,1,1,0),(101,'[14]',5,'2021-01-12 09:44:01','2021-01-12 09:44:03',14,1,4,0),(102,'[42]',5,'2021-01-12 09:44:03','2021-01-12 09:44:06',14,1,11,0),(103,'[62]',5,'2021-01-12 09:44:07','2021-01-12 09:44:09',14,1,15,0),(104,'[66]',5,'2021-01-12 09:44:11','2021-01-12 09:44:12',14,1,16,0),(105,'[22]',5,'2021-01-12 09:44:13','2021-01-12 09:44:15',14,1,6,0),(106,'[26]',5,'2021-01-12 09:44:15','2021-01-12 09:44:16',14,1,7,0),(107,'[69, 70]',5,'2021-01-12 09:44:17','2021-01-12 09:44:20',14,1,17,0),(108,'[29, 30]',5,'2021-01-12 09:44:20','2021-01-12 09:44:24',14,1,8,0),(109,'[8]',5,'2021-01-12 09:44:24','2021-01-12 09:44:27',14,1,2,0),(110,'[57, 58]',6,'2021-01-12 14:03:38','2021-01-12 14:03:54',14,1,14,0),(111,'[34]',6,'2021-01-12 14:04:02','2021-01-17 10:29:27',14,1,9,0),(112,'[66]',6,'2021-01-17 10:29:29','2021-01-17 10:29:32',14,1,16,0),(113,'[50]',6,'2021-01-17 10:29:33','2021-01-17 10:50:43',14,1,12,0),(114,'[81]',6,'2021-01-17 10:50:43','2021-01-17 11:30:28',14,1,20,0),(115,'[53, 54]',6,'2021-01-17 11:30:29','2021-01-17 11:35:02',14,1,13,0),(116,'[9, 10, 11]',6,'2021-01-17 11:35:03','2021-01-17 11:35:08',14,1,3,0),(117,'[26, 27]',6,'2021-01-17 11:35:09','2021-01-17 11:35:11',14,1,7,0),(118,'[21, 23]',6,'2021-01-17 11:35:12','2021-01-17 11:35:14',14,1,6,1),(119,'[5, 7]',6,'2021-01-17 11:35:14','2021-01-17 11:35:17',14,1,2,1),(120,'[73, 75]',6,'2021-01-17 11:35:18','2021-01-17 11:35:20',14,1,18,1),(121,'[29, 31]',6,'2021-01-17 11:35:20','2021-01-17 11:35:23',14,1,8,1),(122,'[1]',6,'2021-01-17 11:35:23','2021-01-17 11:35:25',14,1,1,1),(123,'[69, 71]',6,'2021-01-17 11:35:26','2021-01-17 11:35:30',14,1,17,1),(124,'[37, 39]',6,'2021-01-17 11:35:30','2021-01-17 11:35:32',14,1,10,1),(125,'[61, 63]',6,'2021-01-17 11:35:33','2021-01-17 11:35:35',14,1,15,1),(126,'[13, 15]',6,'2021-01-17 11:35:35','2021-01-17 11:35:38',14,1,4,1),(127,'[77, 79]',6,'2021-01-17 11:35:39','2021-01-17 11:35:41',14,1,19,1),(128,'[17]',6,'2021-01-17 11:35:42','2021-01-17 11:35:44',14,1,5,1),(129,'[41, 43]',6,'2021-01-17 11:35:44','2021-01-17 11:35:47',14,1,11,1),(130,'[65]',7,'2021-01-17 11:42:16','2021-01-17 11:42:21',14,1,16,1),(131,'[29, 31]',7,'2021-01-17 11:42:22','2021-01-17 11:42:24',14,1,8,1),(132,'[17]',7,'2021-01-17 11:42:25','2021-01-17 11:42:27',14,1,5,1),(133,'[53, 55]',7,'2021-01-17 11:42:27','2021-01-17 11:42:30',14,1,13,1),(134,'[61, 63]',7,'2021-01-17 11:42:31','2021-01-17 11:42:33',14,1,15,1),(135,'[77, 79]',7,'2021-01-17 11:42:34','2021-01-17 11:42:37',14,1,19,1),(136,'[69, 71]',7,'2021-01-17 11:42:38','2021-01-17 11:42:42',14,1,17,1),(137,'[33]',7,'2021-01-17 11:42:43','2021-01-17 11:42:46',14,1,9,1),(138,'[45, 47, 49, 51]',7,'2021-01-17 11:42:48','2021-01-17 11:42:55',14,1,12,0),(139,'[13, 15]',7,'2021-01-17 11:42:57','2021-01-17 11:43:02',14,1,4,1),(140,'[37, 39]',7,'2021-01-17 11:43:05','2021-01-17 11:43:09',14,1,10,1),(141,'[5, 7]',7,'2021-01-17 11:43:10','2021-01-17 11:43:14',14,1,2,1),(142,'[25, 27]',7,'2021-01-17 11:43:16','2021-01-17 11:43:23',14,1,7,1),(143,'[]',7,'2021-01-17 11:43:27',NULL,14,1,20,0),(144,'[9, 10]',1,'2021-01-19 12:28:12','2021-01-19 12:31:21',16,1,3,0),(145,'[74, 75]',1,'2021-01-19 12:31:22','2021-01-19 20:51:41',16,1,18,0),(146,'[85]',1,'2021-01-19 18:11:00','2021-01-19 18:11:04',14,2,21,1),(147,'[86]',1,'2021-01-19 18:11:05','2021-01-19 18:11:07',14,2,22,1),(148,'[85]',2,'2021-01-19 19:39:48','2021-01-19 19:48:01',14,2,21,1),(149,'[86]',2,'2021-01-19 19:48:02','2021-01-19 19:48:05',14,2,22,1),(150,'[86]',1,'2021-01-19 20:14:03','2021-01-19 20:14:08',16,2,22,1),(151,'[85]',1,'2021-01-19 20:14:08','2021-01-19 20:14:10',16,2,21,1),(152,'[]',2,'2021-01-19 20:14:17',NULL,16,2,22,0),(153,'[41, 42, 43]',1,'2021-01-19 20:51:41','2021-01-19 20:51:52',16,1,11,0),(154,'[]',1,'2021-01-19 20:51:52',NULL,16,1,17,0),(155,'[33]',1,'2021-01-20 09:37:56','2021-01-20 10:03:19',17,1,9,1),(156,'[85]',1,'2021-01-20 09:38:22','2021-01-20 10:05:04',17,2,21,1),(157,'[73, 74]',1,'2021-01-20 10:03:27','2021-01-20 10:03:34',17,1,18,0),(158,'[69, 70]',1,'2021-01-20 10:03:35','2021-01-20 10:19:55',17,1,17,0),(159,'[86]',1,'2021-01-20 10:05:06','2021-01-20 10:05:11',17,2,22,1),(160,'[85]',2,'2021-01-20 10:05:24','2021-01-20 10:05:26',17,2,21,1),(161,'[86]',2,'2021-01-20 10:05:27','2021-01-20 10:05:28',17,2,22,1),(162,'[2]',1,'2021-01-20 10:19:56','2021-01-20 10:20:04',17,1,1,0),(163,'[]',1,'2021-01-20 10:20:04',NULL,17,1,6,0);
+/*!40000 ALTER TABLE `user_quizz_answer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_subscription`
+--
+
+DROP TABLE IF EXISTS `user_subscription`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_subscription` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `finished_at` datetime NOT NULL,
+  `user_id` int NOT NULL,
+  `subscription_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_230A18D1A76ED395` (`user_id`),
+  KEY `IDX_230A18D19A1887DC` (`subscription_id`),
+  CONSTRAINT `FK_230A18D19A1887DC` FOREIGN KEY (`subscription_id`) REFERENCES `subscription` (`id`),
+  CONSTRAINT `FK_230A18D1A76ED395` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_subscription`
+--
+
+LOCK TABLES `user_subscription` WRITE;
+/*!40000 ALTER TABLE `user_subscription` DISABLE KEYS */;
+INSERT INTO `user_subscription` VALUES (1,'2020-01-05 13:47:14','2021-02-05 13:47:14',14,2),(2,'2020-01-09 10:47:49','2021-02-09 10:47:57',15,2),(3,'2020-01-09 10:47:49','2021-02-09 10:47:57',17,2);
+/*!40000 ALTER TABLE `user_subscription` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -160,4 +399,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-04 18:17:37
+-- Dump completed on 2021-01-20 16:43:53
