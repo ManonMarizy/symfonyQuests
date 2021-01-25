@@ -1,20 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block main %}
-    <h1 class="text-center mt-3">Bienvenue sur Wild Series</h1>
-    <div class="d-flex flex-wrap">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ asset('build/images/moviesPicture/afficheDeadpool1.jpg') }}" class="card-img-top text-center" alt="affiche du film">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <h5 class="card-title m-0">Deadpool</h5>
-                    <a href="#" class="btn btn-heart"><img class="img-size" src="{{ asset('build/images/heartIcon.png') }}" alt="logo follow"></a>
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">
+            Wild series
+        </h1>
+        {% for program in programs %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h2>{{ program.title }} - {{ 'Categories' |trans }} : {{ program.category.name }}</h2>
+                    <p>{{ program.summary }}</p>
+                    <a href="{{ path("program_show", { programSlug: program.slug }) }}">{{ 'See details' |trans }}</a>
                 </div>
-                <h6 class="mt-3"><u>Résumé</u></h6>
-                <p class="card-text">Wade Wilson, un ancien militaire des forces spéciales, est devenu mercenaire. Après avoir subi une expérimentation hors-norme qui va accélérer ses pouvoirs de guérison, il va devenir Deadpool. Armé de ses nouvelles capacités et d'un humour noir survolté, il va traquer l'homme qui a bien failli anéantir sa vie.</p>
-                <h6><u>Actors</u></h6>
-                <p>Rayan Reynolds, Morena Baccarin, Ed Skrein, Gina Carano...</p>
             </div>
-        </div>
+        {% else %}
+            {{ 'No program found' |trans }}
+        {% endfor %}
     </div>
 {% endblock %}
